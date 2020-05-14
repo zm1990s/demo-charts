@@ -52,7 +52,7 @@ questions:
   - "true"
   - "false"
 - variable: externalURL
-  default: "https://harbor.local:30003"
+  default: "http://harbor.local:30003"
   description: "The external URL for Harbor core service (format: protocol://domain:port)"
   type: string
   label: The External URL for Harbor Service
