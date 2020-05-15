@@ -20,6 +20,6 @@ spec:
         imagePullPolicy: {{ .Values.deployment.pullpolicy }}
         name: {{ .Values.app.name }}
         ports:
-        - containerPort: {{ .Values.deployment.containerPort }}
+        - containerPort: 80
           name: http
           protocol: TCP
