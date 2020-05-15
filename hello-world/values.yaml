@@ -2,7 +2,7 @@ app:
   name: hello-world
 
 deployment:
-  replicas: 1
+  replicas: "1"
   image: harbor.youjiqing.club/rancher/hello-world:latest
   imagepullpolicy: IfNotPresent
 
