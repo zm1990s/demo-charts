@@ -28,7 +28,7 @@ questions:
   required: true
   default: IfNotPresent
   description: The image pull policy.
-  type: string
+  type: enum
   label: Image Pull Policy
   group: "DEPLYMENT"
   options:
