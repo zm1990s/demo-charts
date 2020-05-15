@@ -15,7 +15,7 @@ questions:
   type: string
   label: Number of Pod
   group: "DEPLYMENT"
-- variable: defaultimage
+- variable: deployment.image
   required: true
   default: harbor.youjiqing.club/rancher/hello-world:latest
   description: "The image of your app, eg: nginx:latest."
