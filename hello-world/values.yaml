@@ -4,7 +4,7 @@ app:
 deployment:
   replicas: 1
   image: harbor.youjiqing.club/rancher/hello-world:latest
-  imagePullPolicy: IfNotPresent
+  imagepullpolicy: IfNotPresent
 
 service:
   type: ClusterIP

@@ -24,7 +24,7 @@ questions:
   type: string
   label: Image of Pod
   group: "DEPLYMENT"
- - variable: deployment.imagePullPolicy
+ - variable: deployment.imagepullpolicy
   required: true
   default: IfNotPresent
   description: "The image pull policy."
