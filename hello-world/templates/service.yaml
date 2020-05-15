@@ -8,9 +8,9 @@ metadata:
 spec:
   ports:
   - name: http
-    port: {{ .Values.deployment.containerPort }}
+    port: 80
     protocol: TCP
-    targetPort: {{ .Values.deployment.containerPort }}
+    targetPort: 80
   selector:
     app: {{ .Values.app.name }}
   type: {{ .Values.service.type }}
