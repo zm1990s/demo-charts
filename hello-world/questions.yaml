@@ -22,16 +22,6 @@ questions:
   type: string
   label: Image of Pod
   group: "DEPLYMENT"
- - variable: deployment.imagepullpolicy
-  required: true
-  default: IfNotPresent
-  description: "The image pull policy."
-  type: enum
-  label: Image Pull Policy
-  group: "DEPLYMENT"
-  options:
-  - "IfNotPresent"
-  - "Always"
 - variable: service.type
   required: true
   default: ClusterIP
