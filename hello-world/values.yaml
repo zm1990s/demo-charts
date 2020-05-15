@@ -3,8 +3,9 @@ app:
 
 deployment:
   replicas: "1"
-  app-image: harbor.youjiqing.club/rancher/hello-world:latest
   imagepullpolicy: IfNotPresent
+
+defaultimage: harbor.youjiqing.club/rancher/hello-world:latest
 
 service:
   type: ClusterIP
