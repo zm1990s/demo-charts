@@ -3,7 +3,7 @@ app:
 
 deployment:
   replicas: "1"
-  imagepullpolicy: IfNotPresent
+  pullpolicy: IfNotPresent
   image: harbor.youjiqing.club/rancher/hello-world:latest
 
 service:
