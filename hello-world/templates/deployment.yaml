@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - image: {{ .Values.deployment.image }}
-        imagePullPolicy: {{ .Values.deployment.imagePullPolicy }}
+        imagePullPolicy: {{ .Values.deployment.pullpolicy }}
         name: {{ .Values.app.name }}
         ports:
         - containerPort: 80
