@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
   labels:
-    app: {{ .Values.app.name }}
+    app: hello-wrold
     charts: demo-charts
   name: {{ .Values.app.name }}
 spec:
   replicas: {{ .Values.deployment.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.app.name }}
+      app: hello-world
   template:
     metadata:
       labels:
-        app: {{ .Values.app.name }}
+        app: hello-world
     spec:
       containers:
       - image: {{ .Values.deployment.image }}
         imagePullPolicy: {{ .Values.deployment.pullpolicy }}
-        name: {{ .Values.app.name }}
+        name: hello-world-container
         ports:
         - containerPort: 80
           name: http

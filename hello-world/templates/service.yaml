@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: {{ .Values.app.name }}
+    app: hello-world
     charts: demo-charts
   name: {{ .Values.app.name }}
 spec:
@@ -12,5 +12,5 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    app: {{ .Values.app.name }}
+    app: hello-world
   type: {{ .Values.service.type }}

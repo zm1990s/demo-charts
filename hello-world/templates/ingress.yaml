@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   labels:
-    app: {{ .Values.app.name }}
+    app: hello-world
     charts: demo-charts
   name: {{ .Values.app.name }}
 spec:
