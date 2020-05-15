@@ -22,3 +22,27 @@ questions:
   type: string
   label: Image of Pod
   group: "DEPLYMENT"
+ - variable: deployment.imagepullpolicy
+  required: true
+  default: IfNotPresent
+  description: "The image pull policy."
+  type: enum
+  label: Image Pull Policy
+  group: "DEPLYMENT"
+  options:
+  - "IfNotPresent"
+  - "Always"
+- variable: service.type
+  required: true
+  default: ClusterIP
+  description: "The service type, only support ClusterIP."
+  type: string
+  label: Service Type
+  group: "SERVICE & INGRESS" 
+- variable: ingress.host
+  required: true
+  default: hello-world.youjiqing.club
+  description: "Domain name to access you app, FQDN."
+  type: string
+  label: Host
+  group: "SERVICE & INGRESS" 
