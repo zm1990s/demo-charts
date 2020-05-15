@@ -2,15 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: hello-world
+    app: {{ .Values.app.name }}
     charts: demo-charts
   name: {{ .Values.app.name }}
 spec:
   ports:
   - name: http
-    port: 80
+    port: {{ .Values.deployment.containerPort }}
     protocol: TCP
-    targetPort: 80
+    targetPort: {{ .Values.deployment.containerPort }}
   selector:
-    app: hello-world
+    app: {{ .Values.app.name }}
   type: {{ .Values.service.type }}
