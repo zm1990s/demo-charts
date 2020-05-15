@@ -22,4 +22,3 @@ questions:
   type: string
   label: Image of Pod
   group: "DEPLYMENT"
- - variable: deployment.imagepullpolicy
