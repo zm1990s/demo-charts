@@ -1,0 +1,13 @@
+app:
+  name: nginx
+
+deployment:
+  replicas: "1"
+  pullpolicy: IfNotPresent
+  image: harbor.youjiqing.club/rancher/nginx:${CICD_EXECUTION_SEQUENCE}
+
+service:
+  type: ClusterIP
+
+ingress:
+  host: pipeline.youjiqing.club
