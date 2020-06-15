@@ -7,14 +7,12 @@ keywords:
 - docker
 - registry
 - harbor
-home: https://goharbor.io
+home: https://github.com/JackieYou/charts/tree/master/harbor
 icon: https://markdown-1300017440.cos.ap-shanghai.myqcloud.com/mweb/harbor.png
 sources:
-- https://github.com/goharbor/harbor
+- https://github.com/JackieYou/charts/tree/master/harbor
 - https://github.com/goharbor/harbor-helm
+- https://github.com/goharbor/harbor
 maintainers:
-- name: Wenkai Yin
-  email: yinw@vmware.com
-- name: Weiwei He
-  email: hweiwei@vmware.com
-engine: gotpl
+- name: Jiqing You
+  email: jiqing@rancher.com

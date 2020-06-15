@@ -1,16 +1,16 @@
 apiVersion: v1
-name: pipeline-demo
+name: pipeline-html
 version: 1.0.17
 appVersion: 1.0.17
 description: A pipeline demo app. 
 keywords:
 - docker
-- demo
+- html
 - pipeline
-home: https://github.com/JackieYou/demo-charts/pipeline-demo
+home: https://github.com/JackieYou/charts/tree/master/pipeline/html
 icon: https://markdown-1300017440.cos.ap-shanghai.myqcloud.com/mweb/1.png
 sources:
-- https://github.com/JackieYou/demo-charts/pipeline-demo
+- https://github.com/JackieYou/charts/tree/master/pipeline/html
 maintainers:
 - name: Jackie You
   email: jiqing@rancher.com
