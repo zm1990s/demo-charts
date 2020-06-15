@@ -7,10 +7,10 @@ keywords:
 - docker
 - demo
 - net-tools
-home: https://github.com/JackieYou/demo-charts/tree/master/charts/net-tools
+home: https://github.com/JackieYou/charts/tree/master/net-tools
 icon: https://markdown-1300017440.cos.ap-shanghai.myqcloud.com/mweb/tools.png
 sources:
-- https://github.com/JackieYou/demo-charts/tree/master/charts/net-tools
+- https://github.com/JackieYou/charts/tree/master/net-tools
 maintainers:
 - name: Jackie You
   email: jiqing@rancher.com
