@@ -1,0 +1,13 @@
+app:
+  name: pipeline-html
+
+deployment:
+  replicas: "1"
+  pullpolicy: IfNotPresent
+  image: harbor.youjiqing.club/rancher/pipeline-html:7
+
+service:
+  type: ClusterIP
+
+ingress:
+  host: pipeline.youjiqing.xyz
