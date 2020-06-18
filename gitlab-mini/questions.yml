@@ -54,7 +54,7 @@ questions:
   min: 30000
   max: 32767
   label: Gitlab ssh port
-  group: "NodePort ettings"
+  group: "NodePort settings"
 
 # persistent volume settings
 - variable: persistence.enabled
@@ -68,7 +68,7 @@ questions:
   subquestions:
     - variable: gitlab.storageClass
       default: ""
-      description: "If undefined or null, uses the default StorageClass. Default to null"
+      description: "DO NOT USE NFS PV!!! GITLAB WILL FAIL TO START!! If undefined or null, uses the default StorageClass"
       type: storageclass
       label: Default StorageClass for Gitlab
     - variable: gitlab.size
