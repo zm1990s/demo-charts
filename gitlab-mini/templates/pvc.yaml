@@ -3,17 +3,17 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "gitlab" . }}
+  name: {{ .Release.Name }}
   {{- if eq .Values.persistence.resourcePolicy "keep" }}
   annotations:
     helm.sh/resource-policy: keep
   {{- end }}
   labels:
-{{ include "gitlab.labels" . | indent 4 }}
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
     component: gitlab
 spec:
-  accessModes: 
-    - {{ .Values.gitlab.accessMode }}
+  accessModes: ReadWriteOnce
   resources:
     requests:
       storage: {{ .Values.gitlab.size }}
