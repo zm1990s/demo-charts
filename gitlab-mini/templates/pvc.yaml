@@ -1,5 +1,5 @@
 {{- if .Values.persistence.enabled }}
-{{- if and (not $gitlab.existingClaim) (eq .Values.persistence.imageChartStorage.type "filesystem") }}
+{{- if (not $gitlab.existingClaim) }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:

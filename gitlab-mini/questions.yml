@@ -25,7 +25,8 @@ questions:
     description: "Gitlab hostname"
     type: string
     required: true
-  - variable: persistence.persistentVolumeClaim.gitlab.existingClaim
+    group: "Gitlab Settings"
+  - variable: gitlab.existingClaim
     default: ""
     description: "If not empty, uses the specified existing PVC instead of creating new one"
     type: pvc
