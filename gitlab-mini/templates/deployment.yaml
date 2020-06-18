@@ -56,9 +56,9 @@ spec:
               port: http
       volumes:
       - name: gitlab-data
-      {{- if and .Values.persistence.enabled (not $gitlab.existingClaim) }}
+      {{- if and .Values.persistence.enabled (not .Values.gitlab.existingClaim) }}
         persistentVolumeClaim:
-          claimName: {{ $gitlab.existingClaim | default (include "gitlab" .) }}
+          claimName: {{ .Values.gitlab.existingClaim | default (include "gitlab" .) }}
       {{- else }}
         emptyDir: {}
       {{- end }}
