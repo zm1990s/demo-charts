@@ -30,9 +30,9 @@ spec:
           - name: GITLAB_TIMEZONE
             value: Beijing
           - name: GITLAB_HOST
-            value: {{ $hostname }}
+            value: {{ .Values.hostname }}
           - name: HOSTNAME
-            value: {{ $hostname }}
+            value: {{ .Values.hostname }}
           ports:
             - name: http
               containerPort: 80
