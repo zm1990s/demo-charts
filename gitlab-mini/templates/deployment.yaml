@@ -46,11 +46,16 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 3
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 3
+
       volumes:
       - name: gitlab-data
       {{- if .Values.persistence.enabled }}
