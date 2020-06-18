@@ -1,0 +1,32 @@
+categories:
+  - Development
+questions:
+  - variable: persistence.enabled
+    default: "True"
+    description: "Enable persistent volume for Gitlab"
+    type: boolean
+    required: true
+    label: Gitlab Persistent Volume Enabled
+    show_subquestion_if: true
+    group: "Gitlab Settings"
+    subquestions:
+      - variable: gitlab.size
+        default: "10Gi"
+        description: "Gitlab Persistent Volume Size"
+        type: string
+        label: Gitlab Volume Size
+      - variable: gitlab.storageClass
+        default: ""
+        description: "If undefined or null, uses the default StorageClass. Default to null"
+        type: storageclass
+        label: Default StorageClass for gitlab
+  - variable: hostname
+    default: "gitlab.corp.local"
+    description: "Gitlab hostname"
+    type: string
+    required: true
+  - variable: hostname
+    default: "gitlab.corp.local"
+    description: "Gitlab hostname"
+    type: string
+    required: true

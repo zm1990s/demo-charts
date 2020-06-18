@@ -1,0 +1,29 @@
+{{- if .Values.persistence.enabled }}
+{{- if and (not $gitlab.existingClaim) (eq .Values.persistence.imageChartStorage.type "filesystem") }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ template "gitlab" . }}
+  {{- if eq .Values.persistence.resourcePolicy "keep" }}
+  annotations:
+    helm.sh/resource-policy: keep
+  {{- end }}
+  labels:
+{{ include "gitlab.labels" . | indent 4 }}
+    component: gitlab
+spec:
+  accessModes: 
+    - {{ $gitlab.accessMode }}
+  resources:
+    requests:
+      storage: {{ $gitlab.size }}
+  {{- if $gitlab.storageClass }}
+    {{- if eq "-" $gitlab.storageClass }}
+  storageClassName: ""
+    {{- else }}
+  storageClassName: {{ $gitlab.storageClass }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- end }}
+
