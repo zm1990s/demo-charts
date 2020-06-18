@@ -69,6 +69,6 @@ questions:
       default: ""
       description: "If not empty, uses the specified existing PVC instead of creating new one"
       type: pvc
-      label: Existing Persistent Volume Claim for Database
+      label: Existing Persistent Volume Claim for Gitlab
       group: "Persistent Volume Settings"
       show_if: "persistence.enabled=true"
