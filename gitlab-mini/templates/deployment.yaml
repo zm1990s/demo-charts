@@ -43,18 +43,30 @@ spec:
           volumeMounts:
           - mountPath: /var/opt/gitlab
             name: gitlab-data
+          startupProbe:
+            httpGet:
+              path: /
+              port: 80
+            failureThreshold: 30
+            periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /
               port: 80
-          initialDelaySeconds: 60
-          periodSeconds: 3
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /
               port: 80
-          initialDelaySeconds: 60
-          periodSeconds: 3
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 3
+
+
+
+
 
       volumes:
       - name: gitlab-data
