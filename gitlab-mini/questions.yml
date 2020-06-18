@@ -14,7 +14,7 @@ questions:
   type: string
   label: Image Tag
   group: "Gitlab Settings"
-- variable: hostname
+- variable: Hostname
   default: "gitlab.corp.local"
   description: "Gitlab hostname"
   type: string
