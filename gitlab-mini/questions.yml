@@ -6,7 +6,7 @@ questions:
   default: "gitlab/gitlab-ce"
   description: "gitlab docker image name"
   type: string
-  label: httpserver Image Name
+  label: gitlab Image Name
   group: "Gitlab Settings"
 - variable: image.tag
   default: "12.3.5-ce.0"
@@ -14,9 +14,17 @@ questions:
   type: string
   label: Image Tag
   group: "Gitlab Settings"
-- variable: Hostname
+- variable: hostname
   default: "gitlab.corp.local"
   description: "Gitlab hostname"
+  type: string
+  label: Hostname
+  required: true
+  group: "Gitlab Settings"
+- variable: omnibus_config
+  default: "external_url 'http://gitlab.corp.local'"
+  description: "Gitlab external-url, full qualified domain"
+  label: External URL
   type: string
   required: true
   group: "Gitlab Settings"
@@ -24,21 +32,21 @@ questions:
 
 # Network settings
 - variable: service.nodePort.http
-  default: "30080"
+  default: "31080"
   description: "Gitlab http port"
   type: int
   min: 30000
   max: 32767
   label: Gitlab Http Port
 - variable: service.nodePort.https
-  default: "30443"
+  default: "31443"
   description: "Gitlab https port"
   type: int
   min: 30000
   max: 32767
   label: Gitlab https port
 - variable: service.nodePort.ssh
-  default: "30022"
+  default: "31022"
   description: "Gitlab ssh port"
   type: int
   min: 30000
@@ -57,15 +65,27 @@ questions:
   subquestions:
     - variable: gitlab.size
       default: "10Gi"
-      description: "Gitlab Persistent Volume Size"
+      description: "Gitlab data Dir Persistent Volume Size"
       type: string
-      label: Gitlab Volume Size
+      label: Gitlab Data Volume Size
     - variable: gitlab.storageClass
       default: ""
       description: "If undefined or null, uses the default StorageClass. Default to null"
       type: storageclass
       label: Default StorageClass for gitlab
     - variable: gitlab.existingClaim
+      default: ""
+      description: "If not empty, uses the specified existing PVC instead of creating new one"
+      type: pvc
+      label: Existing Persistent Volume Claim for Gitlab
+      group: "Persistent Volume Settings"
+      show_if: "persistence.enabled=true"
+    - variable: gitlab.etc.size
+      default: "1Gi"
+      description: "Gitlab etc Dir Persistent Volume Size"
+      type: string
+      label: Gitlab etc Volume Size
+    - variable: gitlab.etc.existingClaim
       default: ""
       description: "If not empty, uses the specified existing PVC instead of creating new one"
       type: pvc
