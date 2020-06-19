@@ -48,21 +48,21 @@ questions:
   show_subquestion_if: true
   group: "Images Settings"
   subquestions:
-    - variable: image.repository.gitlab
+    - variable: image.repository-gitlab
       default: "sameersbn/gitlab:11.8.1"
       description: "gitlab docker image name"
       type: string
       label: gitlab Image Name
       group: "Images Settings"
       show_if: "changedefaultimage.enabled=true"
-    - variable: image.repository.postgres
+    - variable: image.repository-postgres
       default: "sameersbn/postgresql:10"
       description: "postgres docker image name"
       type: string
       label: Postgres Image Name
       group: "Images Settings"
       show_if: "changedefaultimage.enabled=true"
-    - variable: image.repository.redis
+    - variable: image.repository-redis
       default: "sameersbn/redis:latest"
       description: "Redis docker image name"
       type: string
