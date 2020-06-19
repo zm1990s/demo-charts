@@ -53,7 +53,7 @@ spec:
             - localhost
             - -U
             - postgres
-          initialDelaySeconds: 30
+          initialDelaySeconds: 60
           timeoutSeconds: 5
           failureThreshold: 3
         readinessProbe:
