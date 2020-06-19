@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A light weight gitlab for rancher catalogs
 name: gitlab-light
 icon: https://about.gitlab.com/images/devops-tools/gitlab-logo.svg
-version: 0.1.0
+version: 12.10.6
 keywords:
 - gitlab
 - git

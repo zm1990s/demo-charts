@@ -1,0 +1,5 @@
+image:
+  repository:
+    gitlab: "sameersbn/gitlab:12.10.6"
+    postgres: "sameersbn/postgresql:10-2"
+    redis: "sameersbn/redis:4.0.9-2"

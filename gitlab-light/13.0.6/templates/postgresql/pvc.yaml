@@ -1,0 +1,21 @@
+{{- if .Values.persistence.enabled }}
+{{- if (not .Values.db.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: "{{ .Chart.Name }}-db"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.db.size }}
+  {{- if .Values.gitlab.storageClass }}
+    {{- if eq "-" .Values.gitlab.storageClass }}
+  storageClassName: ""
+    {{- else }}
+  storageClassName: {{ .Values.gitlab.storageClass }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- end }}

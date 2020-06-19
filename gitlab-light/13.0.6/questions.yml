@@ -20,7 +20,7 @@ questions:
   default: "Admin@123"
   description: "Gitlab root password"
   label: Root Password
-  type: string
+  type: password
   required: true
   group: "Gitlab Settings"
 - variable: rootemail
@@ -34,7 +34,7 @@ questions:
   default: "db@!23456"
   description: "Gitlab Database password"
   label: DB Password
-  type: string
+  type: password
   required: true
   group: "Gitlab Settings"
 
@@ -49,21 +49,21 @@ questions:
   group: "Images Settings"
   subquestions:
     - variable: image.repository.gitlab
-      default: "sameersbn/gitlab:11.8.1"
+      default: "sameersbn/gitlab:13.0.6"
       description: "gitlab docker image name"
       type: string
       label: gitlab Image Name
       group: "Images Settings"
       show_if: "changedefaultimage.enabled=true"
     - variable: image.repository.postgres
-      default: "sameersbn/postgresql:10"
+      default: "sameersbn/postgresql:11-20200524"
       description: "postgres docker image name"
       type: string
       label: Postgres Image Name
       group: "Images Settings"
       show_if: "changedefaultimage.enabled=true"
     - variable: image.repository.redis
-      default: "sameersbn/redis:latest"
+      default: "sameersbn/redis:4.0.9-2"
       description: "Redis docker image name"
       type: string
       label: gitlab Image Name

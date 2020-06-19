@@ -1,0 +1,149 @@
+categories:
+  - Development
+# Global settings, Hostname, images, etc.
+questions:
+- variable: hostname
+  default: "gitlab.corp.local"
+  description: "Gitlab hostname"
+  type: string
+  label: Hostname
+  required: true
+  group: "Gitlab Settings"
+- variable: omnibus_config
+  default: "external_url 'http://gitlab.corp.local'"
+  description: "Gitlab external-url, full qualified domain"
+  label: External URL
+  type: string
+  required: true
+  group: "Gitlab Settings"
+- variable: rootpassword
+  default: "Admin@123"
+  description: "Gitlab root password"
+  label: Root Password
+  type: password
+  required: true
+  group: "Gitlab Settings"
+- variable: rootemail
+  default: "admin@gitlab.com"
+  description: "Gitlab root email"
+  label: Root E-Mail
+  type: string
+  required: true
+  group: "Gitlab Settings"
+- variable: dbpassword
+  default: "db@!23456"
+  description: "Gitlab Database password"
+  label: DB Password
+  type: password
+  required: true
+  group: "Gitlab Settings"
+
+#images Settings
+- variable: changedefaultimage.enabled
+  default: "True"
+  description: "If You Wish to Change Default Images Repository, Check this."
+  type: boolean
+  required: true
+  label: Change Default Images Repository
+  show_subquestion_if: true
+  group: "Images Settings"
+  subquestions:
+    - variable: image.repository.gitlab
+      default: "sameersbn/gitlab:12.10.6"
+      description: "gitlab docker image name"
+      type: string
+      label: gitlab Image Name
+      group: "Images Settings"
+      show_if: "changedefaultimage.enabled=true"
+    - variable: image.repository.postgres
+      default: "sameersbn/postgresql:10-2"
+      description: "postgres docker image name"
+      type: string
+      label: Postgres Image Name
+      group: "Images Settings"
+      show_if: "changedefaultimage.enabled=true"
+    - variable: image.repository.redis
+      default: "sameersbn/redis:4.0.9-2"
+      description: "Redis docker image name"
+      type: string
+      label: gitlab Image Name
+      group: "Images Settings"
+      show_if: "changedefaultimage.enabled=true"
+
+# Network settings
+- variable: service.nodePort.http
+  default: "31080"
+  description: "Gitlab http port"
+  type: int
+  min: 30000
+  max: 32767
+  label: Gitlab Http Port
+  group: "NodePort ettings"
+- variable: service.nodePort.https
+  default: "31443"
+  description: "Gitlab https port"
+  type: int
+  min: 30000
+  max: 32767
+  label: Gitlab https port
+  group: "NodePort ettings"
+- variable: service.nodePort.ssh
+  default: "31022"
+  description: "Gitlab ssh port"
+  type: int
+  min: 30000
+  max: 32767
+  label: Gitlab ssh port
+  group: "NodePort settings"
+
+# persistent volume settings
+- variable: persistence.enabled
+  default: "True"
+  description: "Enable persistent volume for Gitlab"
+  type: boolean
+  required: true
+  label: Gitlab Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "Persistent Volume Settings"
+  subquestions:
+    - variable: gitlab.storageClass
+      default: ""
+      description: "BE CAREFUL WITH NFS PV, GITLAB MIGHT FAIL TO START!! If undefined or null, uses the default StorageClass"
+      type: storageclass
+      label: Default StorageClass for Gitlab
+    - variable: gitlab.size
+      default: "10Gi"
+      description: "Gitlab data Dir Persistent Volume Size"
+      type: string
+      label: Gitlab Data Dir Volume Size
+    - variable: gitlab.existingClaim
+      default: ""
+      description: "If not empty, uses the specified existing PVC instead of creating new one"
+      type: pvc
+      label: Existing Persistent Volume Claim for Gitlab Data Dir
+      group: "Persistent Volume Settings"
+      show_if: "persistence.enabled=true"
+    - variable: db.size
+      default: "5Gi"
+      description: "Gitlab Database Persistent Volume Size"
+      type: string
+      label: Gitlab Database Volume Size
+    - variable: db.existingClaim
+      default: ""
+      description: "If not empty, uses the specified existing PVC instead of creating new one"
+      type: pvc
+      label: Existing Persistent Volume Claim for Gitlab Database
+      group: "Persistent Volume Settings"
+      show_if: "persistence.enabled=true"
+    - variable: redis.size
+      default: "5Gi"
+      description: "Gitlab Redis Persistent Volume Size"
+      type: string
+      label: Gitlab Redis Volume Size
+    - variable: redis.existingClaim
+      default: ""
+      description: "If not empty, uses the specified existing PVC instead of creating new one"
+      type: pvc
+      label: Existing Persistent Volume Claim for Gitlab Redis
+      group: "Persistent Volume Settings"
+      show_if: "persistence.enabled=true"

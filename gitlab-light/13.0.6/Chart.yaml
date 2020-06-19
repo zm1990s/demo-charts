@@ -1,0 +1,16 @@
+apiVersion: v1
+appVersion: "1.0"
+description: A light weight gitlab for rancher catalogs
+name: gitlab-light
+icon: https://about.gitlab.com/images/devops-tools/gitlab-logo.svg
+version: 13.0.6
+keywords:
+- gitlab
+- git
+
+sources:
+- https://github.com/zm1990s/demo-charts/
+
+maintainers:
+- name: zhangmin  
+  email: zhangmin@rancher.com
