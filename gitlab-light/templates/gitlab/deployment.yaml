@@ -24,7 +24,7 @@ spec:
         args: [ until nc -zv "{{ .Chart.Name }}-postgresql" 5432; do sleep 5; done &&  until nc -zv "{{ .Chart.Name }}-redis" 6379; do sleep 5; done]
       containers:
       - name: {{ .Chart.Name }}-gitlab
-        image: "{{ .Values.gitlab.image.repository }}"
+        image: "{{ .Values.image.repository.gitlab }}"
         imagePullPolicy: IfNotPresent
         env:
         - name: GITLAB_HOST

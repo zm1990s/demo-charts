@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}-redis
-          image: '{{ .Values.redis.image.repository }}'
+          image: '{{ .Values.image.repository.redis }}'
           imagePullPolicy: IfNotPresent
           ports:
             - name: redis
