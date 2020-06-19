@@ -1,4 +1,5 @@
-{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim.data) }}
+{{- if .Values.persistence.enabled }}
+{{- if (not .Values.gitlab.existingClaim.data) }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -19,8 +20,10 @@ spec:
     {{- end }}
   {{- end }}
 {{- end }}
+{{- end }}
 ---
-{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim.etc) }}
+{{- if .Values.persistence.enabled }}
+{{- if (not .Values.gitlab.existingClaim.etc) }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -40,5 +43,6 @@ spec:
   storageClassName: {{ .Values.gitlab.storageClass }}
     {{- end }}
   {{- end }}
+{{- end }}
 {{- end }}
 
