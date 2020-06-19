@@ -1,0 +1,2 @@
+image:
+  repository: "gitlab/gitlab-ce:12.10.10-ce.0"

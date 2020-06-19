@@ -19,7 +19,7 @@ questions:
 
 #images Settings
 - variable: changedefaultimage.enabled
-  default: "True"
+  default: "False"
   description: "If You Wish to Change Default Images Repository, Check this."
   type: boolean
   required: true
@@ -81,14 +81,19 @@ questions:
       description: "Gitlab data Dir Persistent Volume Size"
       type: string
       label: Gitlab Data Dir Volume Size
+    - variable: persistence.existingClaim.data
+      default: ""
+      description: "If not empty, uses the specified existing PVC instead of creating new one"
+      type: pvc
+      label: Uses Existing Persistent Volume Cliam for Data Dir
     - variable: gitlab.etc.size
       default: "1Gi"
       description: "Gitlab Etc Dir Persistent Volume Size"
       type: string
       label: Gitlab Etc Dir Volume Size
-    - variable: persistence.existingClaim
+    - variable: persistence.existingClaim.etc
       default: ""
       description: "If not empty, uses the specified existing PVC instead of creating new one"
       type: pvc
-      label: Uses Existing Persistent Volume Cliam
+      label: Uses Existing Persistent Volume Cliam for Etc Dir
 
