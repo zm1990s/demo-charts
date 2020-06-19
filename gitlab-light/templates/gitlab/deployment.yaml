@@ -17,9 +17,14 @@ spec:
         app.kubernetes.io/name: {{ .Chart.Name }}
         tier: gitlab
     spec:
+      initContainers:
+        - name: {{ .Chart.Name }}-init
+          image: "busybox:latest"
+          command: ["sh","-c"]
+          args: [ until nc -zv "{{ .Chart.Name }}-postgresql" 5432; do sleep 5; done &&  until nc -zv "{{ .Chart.Name }}-redis" 6379; do sleep 5; done]
       containers:
         - name: {{ .Chart.Name }}-gitlab
-          image: "{{ .Values.gitlab.image.repository }}:{{ .Values.gitlab.image.tag }}"
+          image: {{ .Values.gitlab.image.repository }}
           imagePullPolicy: IfNotPresent
           env:
           - name: GITLAB_HOST

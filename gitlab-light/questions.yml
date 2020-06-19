@@ -49,45 +49,24 @@ questions:
   group: "Images Settings"
   subquestions:
     - variable: gitlab.image.repository
-      default: "sameersbn/gitlab"
+      default: "sameersbn/gitlab:11.8.1"
       description: "gitlab docker image name"
       type: string
       label: gitlab Image Name
       group: "Images Settings"
       show_if: "changedefaultimage.enabled=true"
-    - variable: gitlab.image.tag
-      default: "11.8.1"
-      description: "gitlab docker image tag"
-      type: string
-      label: Gitlab Image Tag
-      group: "Images Settings"
-      show_if: "changedefaultimage.enabled=true"
     - variable: postgres.image.repository
-      default: "sameersbn/postgresql"
+      default: "sameersbn/postgresql:10"
       description: "postgres docker image name"
       type: string
       label: Postgres Image Name
       group: "Images Settings"
       show_if: "changedefaultimage.enabled=true"
-    - variable: postgres.image.tag
-      default: "10"
-      description: "postgres docker image tag"
-      type: string
-      label: Postgres Image Tag
-      group: "Images Settings"
-      show_if: "changedefaultimage.enabled=true"
     - variable: redis.image.repository
-      default: "sameersbn/redis"
+      default: "sameersbn/redis:latest"
       description: "Redis docker image name"
       type: string
       label: gitlab Image Name
-      group: "Images Settings"
-      show_if: "changedefaultimage.enabled=true"
-    - variable: redis.image.tag
-      default: "latest"
-      description: "Redis docker image tag"
-      type: string
-      label: Redis Image Tag
       group: "Images Settings"
       show_if: "changedefaultimage.enabled=true"
 
