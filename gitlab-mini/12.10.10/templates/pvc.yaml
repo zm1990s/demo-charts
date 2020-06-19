@@ -17,10 +17,8 @@ spec:
     {{- end }}
   {{- end }}
 {{- end }}
-{{- end }}
 ---
 {{- if .Values.persistence.enabled }}
-{{- if (not .Values.gitlab.etc.existingClaim) }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -37,6 +35,5 @@ spec:
     {{- else }}
   storageClassName: {{ .Values.gitlab.storageClass }}
     {{- end }}
-  {{- end }}
 {{- end }}
 
