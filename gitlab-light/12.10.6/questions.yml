@@ -40,10 +40,9 @@ questions:
 
 #images Settings
 - variable: changedefaultimage.enabled
-  default: "True"
+  default: "False"
   description: "If You Wish to Change Default Images Repository, Check this."
   type: boolean
-  required: true
   label: Change Default Images Repository
   show_subquestion_if: true
   group: "Images Settings"
@@ -73,24 +72,27 @@ questions:
 # Network settings
 - variable: service.nodePort.http
   default: "31080"
-  description: "Gitlab http port"
+  description: "Gitlab http port, Range:30000~32767"
   type: int
+  required: true
   min: 30000
   max: 32767
   label: Gitlab Http Port
   group: "NodePort ettings"
 - variable: service.nodePort.https
   default: "31443"
-  description: "Gitlab https port"
+  description: "Gitlab https port, Range:30000~32767"
   type: int
+  required: true
   min: 30000
   max: 32767
   label: Gitlab https port
   group: "NodePort ettings"
 - variable: service.nodePort.ssh
   default: "31022"
-  description: "Gitlab ssh port"
+  description: "Gitlab ssh port, Range:30000~32767"
   type: int
+  required: true
   min: 30000
   max: 32767
   label: Gitlab ssh port
@@ -108,6 +110,7 @@ questions:
   subquestions:
     - variable: gitlab.storageClass
       default: ""
+      required: true
       description: "BE CAREFUL WITH NFS PV, GITLAB MIGHT FAIL TO START!! If undefined or null, uses the default StorageClass"
       type: storageclass
       label: Default StorageClass for Gitlab
