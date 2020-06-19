@@ -2,12 +2,6 @@ categories:
   - Development
 # Global settings, Hostname, images, etc.
 questions:
-- variable: image.repository
-  default: "gitlab/gitlab-ce:12.10.10-ce.0"
-  description: "gitlab docker image name"
-  type: string
-  label: gitlab Image Name and Tag
-  group: "Gitlab Settings"
 - variable: hostname
   default: "gitlab.corp.local"
   description: "Gitlab hostname"
@@ -22,6 +16,24 @@ questions:
   type: string
   required: true
   group: "Gitlab Settings"
+
+#images Settings
+- variable: changedefaultimage.enabled
+  default: "True"
+  description: "If You Wish to Change Default Images Repository, Check this."
+  type: boolean
+  required: true
+  label: Change Default Images Repository
+  show_subquestion_if: true
+  group: "Images Settings"
+  subquestions:
+    - variable: image.repository
+      default: "gitlab/gitlab-ce:12.10.10-ce.0"
+      description: "gitlab docker image name"
+      type: string
+      label: gitlab Image Name and Tag
+      group: "Images Settings"
+      show_if: "changedefaultimage.enabled=true"
 
 # Network settings
 - variable: service.nodePort.http
