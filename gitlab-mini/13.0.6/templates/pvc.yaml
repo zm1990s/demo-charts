@@ -35,5 +35,6 @@ spec:
     {{- else }}
   storageClassName: {{ .Values.gitlab.storageClass }}
     {{- end }}
+  {{- end }}
 {{- end }}
 
