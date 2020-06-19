@@ -17,7 +17,7 @@ questions:
   required: true
   group: "Gitlab Settings"
 - variable: rootpassword
-  default: "Admin@123"
+  default: ""
   description: "Gitlab root password"
   label: Root Password
   type: password
@@ -31,7 +31,7 @@ questions:
   required: true
   group: "Gitlab Settings"
 - variable: dbpassword
-  default: "db@!23456"
+  default: ""
   description: "Gitlab Database password"
   label: DB Password
   type: password

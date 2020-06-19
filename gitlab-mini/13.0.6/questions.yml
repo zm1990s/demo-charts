@@ -3,16 +3,10 @@ categories:
 # Global settings, Hostname, images, etc.
 questions:
 - variable: image.repository
-  default: "gitlab/gitlab-ce"
+  default: "gitlab/gitlab-ce:13.0.6-ce.0"
   description: "gitlab docker image name"
   type: string
-  label: gitlab Image Name
-  group: "Gitlab Settings"
-- variable: image.tag
-  default: "13.0.6-ce.0"
-  description: "gitlab docker image tag"
-  type: string
-  label: Image Tag
+  label: gitlab Image Name and Tag
   group: "Gitlab Settings"
 - variable: hostname
   default: "gitlab.corp.local"
