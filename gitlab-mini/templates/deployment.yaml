@@ -26,8 +26,8 @@ spec:
             value: {{ .Values.hostname }}
           - name: HOSTNAME
             value: {{ .Values.hostname }}
-          - name: GITLAB_OMNIBUS_CONFIG
-            value: {{ .Values.omnibus_config }}
+ #         - name: GITLAB_OMNIBUS_CONFIG
+ #           value: {{ .Values.omnibus_config }}
           ports:
             - name: http
               containerPort: 80
