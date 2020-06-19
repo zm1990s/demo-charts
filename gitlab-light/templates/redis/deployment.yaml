@@ -45,7 +45,7 @@ spec:
             timeoutSeconds: 1
             failureThreshold: 3
       volumes:
-      - name: gitlab-reids
+      - name: gitlab-redis
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           claimName: "{{ .Chart.Name }}-redis"
