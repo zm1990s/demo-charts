@@ -28,11 +28,11 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: GITLAB_HOST
-          value: {{ .Values.hostname }}
+          value: "{{ .Values.hostname }}"
         - name: HOSTNAME
-          value: {{ .Values.hostname }}
+          value: "{{ .Values.hostname }}"
         - name: GITLAB_OMNIBUS_CONFIG
-          value: {{ .Values.omnibus_config }}
+          value: "{{ .Values.omnibus_config }}"
         - name: TZ
           value: Asia/Shanghai
         - name: GITLAB_TIMEZONE
@@ -44,13 +44,13 @@ spec:
         - name: GITLAB_SECRETS_OTP_KEY_BASE
           value: long-and-random-alpha-numeric-string
         - name: GITLAB_ROOT_PASSWORD
-          value: {{ .Values.rootpassword }}
+          value: "{{ .Values.rootpassword }}"
         - name: GITLAB_ROOT_EMAIL
-          value: {{ .Values.rootemail }}
+          value: "{{ .Values.rootemail }}"
         - name: GITLAB_PORT
-          value: {{ .Values.service.nodePort.http }}
+          value: "{{ .Values.service.nodePort.http }}"
         - name: GITLAB_SSH_PORT
-          value: {{ .Values.service.nodePort.ssh }}
+          value: "{{ .Values.service.nodePort.ssh }}"
         - name: GITLAB_NOTIFY_ON_BROKEN_BUILDS
           value: "true"
         - name: GITLAB_NOTIFY_PUSHER
@@ -62,17 +62,17 @@ spec:
         - name: DB_TYPE
           value: postgres
         - name: DB_HOST
-          value: {{ .Chart.Name }}-postgresql
+          value: "{{ .Chart.Name }}-postgresql"
         - name: DB_PORT
           value: "5432"
         - name: DB_USER
           value: gitlab
         - name: DB_PASS
-          value: {{ .Values.dbpassword }}
+          value: "{{ .Values.dbpassword }}"
         - name: DB_NAME
           value: gitlab_production
         - name: REDIS_HOST
-          value: {{ .Chart.Name }}-redis
+          value: "{{ .Chart.Name }}-redis"
         - name: REDIS_PORT
           value: "6379"
         ports:
