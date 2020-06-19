@@ -18,47 +18,47 @@ spec:
         tier: postgres
     spec:
       containers:
-        - name: {{ .Chart.Name }}-postgres
-          image: {{ .Values.postgres.image.repository }}
-          imagePullPolicy: IfNotPresent
-          env:
-          - name: DB_USER
-            value: gitlab
-          - name: DB_PASS
-            value: {{ .Values.dbpassword }}
-          - name: DB_NAME
-            value: gitlab_production
-          - name: DB_EXTENSION
-            value: pg_trgm
-          ports:
-            - name: postgres
-              containerPort: 5432
-              protocol: TCP
-          volumeMounts:
-          - mountPath: /var/lib/postgresql
-            name: gitlab-db
-          livenessProbe:
-            exec:
-              command:
-              - pg_isready
-              - -h
-              - localhost
-              - -U
-              - postgres
-            initialDelaySeconds: 30
-            timeoutSeconds: 5
-            failureThreshold: 3
-          readinessProbe:
-            exec:
-              command:
-              - pg_isready
-              - -h
-              - localhost
-              - -U
-              - postgres
-            initialDelaySeconds: 5
-            timeoutSeconds: 1
-            failureThreshold: 3
+      - name: {{ .Chart.Name }}-postgres
+        image: {{ .Values.postgres.image.repository }}
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: DB_USER
+          value: gitlab
+        - name: DB_PASS
+          value: {{ .Values.dbpassword }}
+        - name: DB_NAME
+          value: gitlab_production
+        - name: DB_EXTENSION
+          value: pg_trgm
+        ports:
+          - name: postgres
+            containerPort: 5432
+            protocol: TCP
+        volumeMounts:
+        - mountPath: /var/lib/postgresql
+          name: gitlab-db
+        livenessProbe:
+          exec:
+            command:
+            - pg_isready
+            - -h
+            - localhost
+            - -U
+            - postgres
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - pg_isready
+            - -h
+            - localhost
+            - -U
+            - postgres
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          failureThreshold: 3
       volumes:
       - name: gitlab-db
       {{- if .Values.persistence.enabled }}
