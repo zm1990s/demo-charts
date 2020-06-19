@@ -3,7 +3,7 @@ appVersion: "1.0"
 description: A minimal gitlab for rancher catalogs
 name: gitlab-mini
 icon: https://about.gitlab.com/images/devops-tools/gitlab-logo.svg
-version: 0.1.4
+version: "12.10.10-ce.0"
 keywords:
 - gitlab
 - git

@@ -9,7 +9,7 @@ questions:
   label: gitlab Image Name
   group: "Gitlab Settings"
 - variable: image.tag
-  default: "12.3.5-ce.0"
+  default: "12.10.10-ce.0"
   description: "gitlab docker image tag"
   type: string
   label: Image Tag

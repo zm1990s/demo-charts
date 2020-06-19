@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Chart.Name }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Chart.Name }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: GITLAB_HOST
+            value: {{ .Values.hostname }}
+          - name: HOSTNAME
+            value: {{ .Values.hostname }}
+          - name: GITLAB_OMNIBUS_CONFIG
+            value: {{ .Values.omnibus_config }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+              name: https
+              containerPort: 443
+              protocol: TCP
+              name: ssh
+              containerPort: 22
+              protocol: TCP
+          volumeMounts:
+          - mountPath: /var/opt/gitlab
+            name: gitlab-data
+          - mountPath: /etc/gitlab
+            name: gitlab-etc
+          startupProbe:
+            httpGet:
+              path: /
+              port: 80
+            failureThreshold: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 180
+            periodSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 3
+      volumes:
+      - name: gitlab-data
+      {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: "{{ .Release.Name }}-data"
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
+      - name: gitlab-etc
+      {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: "{{ .Release.Name }}-etc"
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
