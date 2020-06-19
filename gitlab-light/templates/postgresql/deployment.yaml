@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}-postgres
-        image: "{{ .Values.image.repository_postgres }}"
+        image: "{{ .Values.image.repository.postgres }}"
         imagePullPolicy: IfNotPresent
         env:
         - name: DB_USER

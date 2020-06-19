@@ -3,7 +3,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: "{{ .Chart.Name }}-data"
+  name: "{{ .Chart.Name }}-db"
 spec:
   accessModes:
     - ReadWriteOnce
