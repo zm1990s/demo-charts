@@ -75,3 +75,8 @@ questions:
       description: "Gitlab Etc Dir Persistent Volume Size"
       type: string
       label: Gitlab Etc Dir Volume Size
+    - variable: persistence.existingClaim
+      default: ""
+      description: "If not empty, uses the specified existing PVC instead of creating new one"
+      type: pvc
+      label: Uses Existing Persistent Volume Cliam
