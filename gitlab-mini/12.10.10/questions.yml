@@ -70,22 +70,8 @@ questions:
       description: "Gitlab data Dir Persistent Volume Size"
       type: string
       label: Gitlab Data Dir Volume Size
-    - variable: gitlab.existingClaim
-      default: ""
-      description: "If not empty, uses the specified existing PVC instead of creating new one"
-      type: pvc
-      label: Existing Persistent Volume Claim for Gitlab Data Dir
-      group: "Persistent Volume Settings"
-      show_if: "persistence.enabled=true"
     - variable: gitlab.etc.size
       default: "1Gi"
       description: "Gitlab Etc Dir Persistent Volume Size"
       type: string
       label: Gitlab Etc Dir Volume Size
-    - variable: gitlab.etc.existingClaim
-      default: ""
-      description: "If not empty, uses the specified existing PVC instead of creating new one"
-      type: pvc
-      label: Existing Persistent Volume Claim for Gitlab Etc Dir
-      group: "Persistent Volume Settings"
-      show_if: "persistence.enabled=true"

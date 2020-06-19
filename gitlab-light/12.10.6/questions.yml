@@ -116,34 +116,13 @@ questions:
       description: "Gitlab data Dir Persistent Volume Size"
       type: string
       label: Gitlab Data Dir Volume Size
-    - variable: gitlab.existingClaim
-      default: ""
-      description: "If not empty, uses the specified existing PVC instead of creating new one"
-      type: pvc
-      label: Existing Persistent Volume Claim for Gitlab Data Dir
-      group: "Persistent Volume Settings"
-      show_if: "persistence.enabled=true"
     - variable: db.size
       default: "5Gi"
       description: "Gitlab Database Persistent Volume Size"
       type: string
       label: Gitlab Database Volume Size
-    - variable: db.existingClaim
-      default: ""
-      description: "If not empty, uses the specified existing PVC instead of creating new one"
-      type: pvc
-      label: Existing Persistent Volume Claim for Gitlab Database
-      group: "Persistent Volume Settings"
-      show_if: "persistence.enabled=true"
     - variable: redis.size
       default: "5Gi"
       description: "Gitlab Redis Persistent Volume Size"
       type: string
       label: Gitlab Redis Volume Size
-    - variable: redis.existingClaim
-      default: ""
-      description: "If not empty, uses the specified existing PVC instead of creating new one"
-      type: pvc
-      label: Existing Persistent Volume Claim for Gitlab Redis
-      group: "Persistent Volume Settings"
-      show_if: "persistence.enabled=true"
