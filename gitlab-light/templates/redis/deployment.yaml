@@ -18,32 +18,32 @@ spec:
         tier: redis
     spec:
       containers:
-      - name: {{ .Chart.Name }}-redis
-        image: "{{ .Values.redis.image.repository }}"
-        imagePullPolicy: IfNotPresent
-        ports:
-          - name: redis
-            containerPort: 6379
-            protocol: TCP
-        volumeMounts:
-        - mountPath: /var/lib/redis
-          name: gitlab-redis
-        livenessProbe:
-          exec:
-            command:
-            - redis-cli
-            - ping
-          initialDelaySeconds: 30
-          timeoutSeconds: 5
-          failureThreshold: 3
-        readinessProbe:
-          exec:
-            command:
-            - redis-cli
-            - ping
-          initialDelaySeconds: 5
-          timeoutSeconds: 1
-          failureThreshold: 3
+        - name: {{ .Chart.Name }}-redis
+          image: "{{ .Values.redis.image.repository }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: redis
+              containerPort: 6379
+              protocol: TCP
+          volumeMounts:
+          - mountPath: /var/lib/redis
+            name: gitlab-redis
+          livenessProbe:
+            exec:
+              command:
+              - redis-cli
+              - ping
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            exec:
+              command:
+              - redis-cli
+              - ping
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            failureThreshold: 3
       volumes:
       - name: gitlab-reids
       {{- if .Values.persistence.enabled }}
