@@ -22,10 +22,6 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: IfNotPresent
           env:
-          - name: TZ
-            value: Asia/Shanghai
-          - name: GITLAB_TIMEZONE
-            value: Beijing
           - name: GITLAB_HOST
             value: {{ .Values.hostname }}
           - name: HOSTNAME
