@@ -1,6 +1,7 @@
 categories:
   - Development
 # Global settings, Hostname, images, etc.
+questions:
 - variable: hostname
   default: "gitlab.corp.local"
   description: "Gitlab hostname"
@@ -18,7 +19,7 @@ categories:
 
 #images Settings
 - variable: changedefaultimage.enabled
-  default: "True"
+  default: "False"
   description: "If You Wish to Change Default Images Repository, Check this."
   type: boolean
   required: true
