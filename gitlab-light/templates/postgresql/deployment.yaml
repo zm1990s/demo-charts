@@ -25,7 +25,10 @@ spec:
         - name: DB_USER
           value: gitlab
         - name: DB_PASS
-          value: {{ .Values.dbpassword }}
+          valueFrom:
+            secretKeyRef:
+              name: postgresql-pass
+              key: password
         - name: DB_NAME
           value: gitlab_production
         - name: DB_EXTENSION

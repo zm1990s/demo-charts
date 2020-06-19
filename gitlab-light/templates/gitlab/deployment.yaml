@@ -21,7 +21,7 @@ spec:
       - name: {{ .Chart.Name }}-init
         image: "busybox:latest"
         command: ["sh","-c"]
-        args: [ until nc -zv "{{ .Chart.Name }}-postgresql" 5432; do sleep 5; done &&  until nc -zv "{{ .Chart.Name }}-redis" 6379; do sleep 5; done]
+        args: [ set -xe && until nc -zv "{{ .Chart.Name }}-postgresql" 5432; do sleep 5; done &&  until nc -zv "{{ .Chart.Name }}-redis" 6379; do sleep 5; done]
       containers:
       - name: {{ .Chart.Name }}-gitlab
         image: "{{ .Values.image.repository.gitlab }}"
@@ -68,7 +68,10 @@ spec:
         - name: DB_USER
           value: gitlab
         - name: DB_PASS
-          value: "{{ .Values.dbpassword }}"
+          valueFrom:
+            secretKeyRef:
+              name: postgresql-pass
+              key: password
         - name: DB_NAME
           value: gitlab_production
         - name: REDIS_HOST
