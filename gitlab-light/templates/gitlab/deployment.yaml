@@ -44,7 +44,10 @@ spec:
         - name: GITLAB_SECRETS_OTP_KEY_BASE
           value: long-and-random-alpha-numeric-string
         - name: GITLAB_ROOT_PASSWORD
-          value: "{{ .Values.rootpassword }}"
+          valueFrom:
+            secretKeyRef:
+              name: gitlab-root-pass
+              key: password
         - name: GITLAB_ROOT_EMAIL
           value: "{{ .Values.rootemail }}"
         - name: GITLAB_PORT
@@ -101,7 +104,7 @@ spec:
           httpGet:
             path: /
             port: 80
-          initialDelaySeconds: 180
+          initialDelaySeconds: 120
           periodSeconds: 10
           failureThreshold: 3
         readinessProbe:
