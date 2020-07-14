@@ -14,7 +14,6 @@ questions:
   options:
   - "hwpoc"
   - "public-AKS"
-  - "local"
 - variable: dockerimagename
   default: "dyadin/toolbox"
   description: "docker image name"
