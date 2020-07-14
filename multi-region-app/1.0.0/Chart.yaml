@@ -1,0 +1,15 @@
+apiVersion: v1
+appVersion: "2.0"
+description: test
+name: multi-region-app
+icon: file://../aks.png
+version: "v1.0.0"
+keywords:
+- test
+
+sources:
+- https://github.com/zm1990s/demo-charts/
+
+maintainers:
+- name: zhangmin  
+  email: zhangmin@rancher.com
