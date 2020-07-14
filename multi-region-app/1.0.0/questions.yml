@@ -15,7 +15,7 @@ questions:
   - "hwpoc"
   - "public-AKS"
 - variable: dockerimagename
-  default: "dyadin/toolbox"
+  default: "dyadintoolbox"
   description: "docker image name"
   type: string
   label: Image Name
@@ -29,7 +29,7 @@ questions:
   group: "Global"
   show_if: "region.selected=hwpoc"
 - variable: dockerimagename
-  default: "dyadin/toolbox"
+  default: "dyadin2toolbox"
   description: "docker image name"
   type: string
   label: Image Name
