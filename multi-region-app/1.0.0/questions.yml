@@ -36,13 +36,7 @@ questions:
   type: string
   label: Image Tag
   group: "Images"
-- variable: selected-region-aws
-  default: "aks"
-  description: "docker image name"
-  type: string
-  label: Image Name
-  group: "Global"
-  show_if: "region=public-AKS"
+
 - variable: image.repository
   show_if: "region=public-AKS"
   default: "dyadin/toolbox"
