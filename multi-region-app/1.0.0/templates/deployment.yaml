@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.imagename}}:{{ .Values.imagetag }}"
           imagePullPolicy: IfNotPresent
           command:
           - /bin/bash
