@@ -4,55 +4,55 @@ categories:
 questions:
 
 # region settings
-- variable: region.selected
+- variable: region
   required: true
-  default: "hwpoc"
+  default: ""
   description: "select Development region"
   type: enum
   label: App region
-  group: "Global"
+  group: "Images"
   options:
-  - "hwpoc"
-  - "public-AKS"
-- variable: dockerimagename
-  default: "dyadintoolbox"
+  - "true"
+  - "false"
+- variable: image.repository 
+  default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
-  group: "Global"
-  show_if: "region.selected=hwpoc"
-- variable: dockerimagetag
+  group: "Images"
+  show_if: "region=true"
+- variable: image.tag
+  show_if: "region=true"
   default: "1.0"
   description: "docker image tag"
   type: string
   label: Image Tag
-  group: "Global"
-  show_if: "region.selected=hwpoc"
-- variable: dockerimagename
-  default: "dyadin2toolbox"
+  group: "Images"
+- variable: image.repository
+  show_if: "region=false"
+  default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
-  group: "Global"
-  show_if: "region.selected=public-AKS"
-- variable: dockerimagetag
+  group: "Images"
+- variable: image.tag
+  show_if: "region=false"
   default: "1.1"
   description: "docker image tag"
   type: string
   label: Image Tag
-  group: "Global"
-  show_if: "region.selected=public-AKS"
-- variable: dockerimagename
+  group: "Images"
+- variable: image.repository
+  show_if: "region=local"
   default: "dyadin/troubleshooting-toolbox"
   description: "docker image name"
   type: string
   label: Image Name
-  group: "Global"
-  show_if: "region.selected=local"
-- variable: dockerimagetag
+  group: "Images"
+- variable: image.tag
+  show_if: "region=local"
   default: "latest"
   description: "docker image tag"
   type: string
   label: Image Tag
-  group: "Global"
-  show_if: "region.selected=local"
+  group: "Images"
