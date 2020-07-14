@@ -6,15 +6,22 @@ questions:
 # region settings
 - variable: region
   required: true
-  default: ""
+  default: "hwpoc"
   description: "select Development region"
   type: enum
   label: App region
-  group: "Images"
+  group: "Global"
   options:
   - "hwpoc"
   - "public-AKS"
   - "local"
+- variable: selected-region-hwpoc
+  default: "hwpoc"
+  description: "docker image name"
+  type: string
+  label: Image Name
+  group: "Global"
+  show_if: "region=hwpoc"
 - variable: image.repository 
   default: "dyadin/toolbox"
   description: "docker image name"
@@ -29,6 +36,13 @@ questions:
   type: string
   label: Image Tag
   group: "Images"
+- variable: selected-region-aws
+  default: "aks"
+  description: "docker image name"
+  type: string
+  label: Image Name
+  group: "Global"
+  show_if: "region=public-AKS"
 - variable: image.repository
   show_if: "region=public-AKS"
   default: "dyadin/toolbox"
@@ -57,35 +71,3 @@ questions:
   type: string
   label: Image Tag
   group: "Images"
-#ss 
-- variable: expose.tls.enabled
-  default: "false"
-  required: true
-  description: "How to access Harbor, HTTPS or HTTP "
-  type: enum
-  label: Enable tls or not
-  group: "Expose Service Options"
-  options:
-  - "true"
-  - "false"
-- variable: externalURL
-  default: "https://core.harbor.domain"
-  description: "The external URL for Harbor core service (format: protocol://domain:port)"
-  type: string
-  label: The External URL for Harbor Service
-  group: "Expose Service Options"
-  show_if: "expose.tls.enabled=true"
-- variable: externalURL
-  default: "http://core.harbor.domain"
-  description: "The external URL for Harbor core service (format: protocol://domain:port)"
-  type: string
-  label: The External URL for Harbor Service
-  group: "Expose Service Options"
-  show_if: "expose.tls.enabled=false"
-- variable: expose.tls.secretName
-  default: ""
-  description: "The secret must contain keys named tls.crt and tls.key that contain the certificate and private key to use for TLS"
-  type: string
-  label: Select Your Harbor TLS Certificate
-  group: "Expose Service Options"
-  show_if: "expose.tls.enabled=true"
