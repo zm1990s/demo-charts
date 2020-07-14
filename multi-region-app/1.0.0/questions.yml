@@ -31,7 +31,7 @@ questions:
   show_if: "region=hwpoc"
 - variable: imagetag
   show_if: "region=hwpoc"
-  default: "1.0"
+  default: "1.1"
   description: "docker image tag"
   type: string
   label: Image Tag
@@ -52,7 +52,7 @@ questions:
   group: "Images"
 - variable: imagetag
   show_if: "region=public-AKS"
-  default: "1.1"
+  default: "latest"
   description: "docker image tag"
   type: string
   label: Image Tag
