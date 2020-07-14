@@ -4,7 +4,7 @@ categories:
 questions:
 
 # region settings
-- variable: region
+- variable: region.selected
   required: true
   default: ""
   description: "select Development region"
@@ -15,45 +15,45 @@ questions:
   - "hwpoc"
   - "public-AKS"
   - "local"
-- variable: image.repository
-  show_if: "region=hwpoc"
+- variable: image.repository 
   default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
   group: "Images"
+  show_if: "region.selected=hwpoc"
 - variable: image.tag
-  show_if: "region=hwpoc"
   default: "1.0"
   description: "docker image tag"
   type: string
   label: Image Tag
   group: "Images"
+  show_if: "region.selected=hwpoc"
 - variable: image.repository
-  show_if: "region=public-AKS"
   default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
   group: "Images"
+  show_if: "region.selected=public-AKS"
 - variable: image.tag
-  show_if: "region=public-AKS"
   default: "1.1"
   description: "docker image tag"
   type: string
   label: Image Tag
   group: "Images"
+  show_if: "region.selected=public-AKS"
 - variable: image.repository
-  show_if: "region=local"
   default: "dyadin/troubleshooting-toolbox"
   description: "docker image name"
   type: string
   label: Image Name
   group: "Images"
+  show_if: "region.selected=local"
 - variable: image.tag
-  show_if: "region=local"
   default: "latest"
   description: "docker image tag"
   type: string
   label: Image Tag
   group: "Images"
+  show_if: "region.selected=local"
