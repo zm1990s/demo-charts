@@ -24,10 +24,10 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.dockerimagename }}:{{ .Values.dockerimagetag }}"
           imagePullPolicy: IfNotPresent
           command:
-          - /bin/sh
+          - /bin/bash
           args:
           - darkhttpd
           - /root

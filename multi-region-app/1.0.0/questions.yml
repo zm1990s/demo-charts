@@ -15,42 +15,42 @@ questions:
   - "hwpoc"
   - "public-AKS"
   - "local"
-- variable: image.repository 
+- variable: dockerimagename
   default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
   group: "Images-hwpoc"
   show_if: "region.selected=hwpoc"
-- variable: image.tag
+- variable: dockerimagetag
   default: "1.0"
   description: "docker image tag"
   type: string
   label: Image Tag
   group: "Images-hwpoc"
   show_if: "region.selected=hwpoc"
-- variable: image.repository
+- variable: dockerimagename
   default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
   group: "Images-aks"
   show_if: "region.selected=public-AKS"
-- variable: image.tag
+- variable: dockerimagetag
   default: "1.1"
   description: "docker image tag"
   type: string
   label: Image Tag
   group: "Images-aks"
   show_if: "region.selected=public-AKS"
-- variable: image.repository
+- variable: dockerimagename
   default: "dyadin/troubleshooting-toolbox"
   description: "docker image name"
   type: string
   label: Image Name
   group: "Images-local"
   show_if: "region.selected=local"
-- variable: image.tag
+- variable: dockerimagetag
   default: "latest"
   description: "docker image tag"
   type: string
