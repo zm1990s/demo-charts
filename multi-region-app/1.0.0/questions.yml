@@ -19,40 +19,40 @@ questions:
   description: "docker image name"
   type: string
   label: Image Name
-  group: "Images-hwpoc"
+  group: "Global"
   show_if: "region.selected=hwpoc"
 - variable: dockerimagetag
   default: "1.0"
   description: "docker image tag"
   type: string
   label: Image Tag
-  group: "Images-hwpoc"
+  group: "Global"
   show_if: "region.selected=hwpoc"
 - variable: dockerimagename
   default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
-  group: "Images-aks"
+  group: "Global"
   show_if: "region.selected=public-AKS"
 - variable: dockerimagetag
   default: "1.1"
   description: "docker image tag"
   type: string
   label: Image Tag
-  group: "Images-aks"
+  group: "Global"
   show_if: "region.selected=public-AKS"
 - variable: dockerimagename
   default: "dyadin/troubleshooting-toolbox"
   description: "docker image name"
   type: string
   label: Image Name
-  group: "Images-local"
+  group: "Global"
   show_if: "region.selected=local"
 - variable: dockerimagetag
   default: "latest"
   description: "docker image tag"
   type: string
   label: Image Tag
-  group: "Images-local"
+  group: "Global"
   show_if: "region.selected=local"
