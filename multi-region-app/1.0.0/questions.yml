@@ -15,48 +15,47 @@ questions:
   - "hwpoc"
   - "public-AKS"
   - "local"
-  subquestions:
-    - variable: image.repository
-      show_if: "region=hwpoc"
-      default: "dyadin/toolbox"
-      description: "docker image name"
-      type: string
-      label: Image Name
-      group: "Global"
-    - variable: image.tag
-      show_if: "region=hwpoc"
-      default: "1.0"
-      description: "docker image tag"
-      type: string
-      label: Image Tag
-      group: "Global"
-    - variable: image.repository
-      show_if: "region=public-AKS"
-      default: "dyadin/toolbox"
-      description: "docker image name"
-      type: string
-      label: Image Name
-      group: "Global"
-    - variable: image.tag
-      show_if: "region=public-AKS"
-      default: "1.1"
-      description: "docker image tag"
-      type: string
-      label: Image Tag
-      group: "Global"
-    - variable: image.repository
-      show_if: "region=local"
-      default: "dyadin/troubleshooting-toolbox"
-      description: "docker image name"
-      type: string
-      label: Image Name
-      group: "Global"
-    - variable: image.tag
-      show_if: "region=local"
-      default: "latest"
-      description: "docker image tag"
-      type: string
-      label: Image Tag
-      group: "Global"
+- variable: image.repository
+  show_if: "region=hwpoc"
+  default: "dyadin/toolbox"
+  description: "docker image name"
+  type: string
+  label: Image Name
+  group: "Images"
+- variable: image.tag
+  show_if: "region=hwpoc"
+  default: "1.0"
+  description: "docker image tag"
+  type: string
+  label: Image Tag
+  group: "Images"
+- variable: image.repository
+  show_if: "region=public-AKS"
+  default: "dyadin/toolbox"
+  description: "docker image name"
+  type: string
+  label: Image Name
+  group: "Images"
+- variable: image.tag
+  show_if: "region=public-AKS"
+  default: "1.1"
+  description: "docker image tag"
+  type: string
+  label: Image Tag
+  group: "Images"
+- variable: image.repository
+  show_if: "region=local"
+  default: "dyadin/troubleshooting-toolbox"
+  description: "docker image name"
+  type: string
+  label: Image Name
+  group: "Images"
+- variable: image.tag
+  show_if: "region=local"
+  default: "latest"
+  description: "docker image tag"
+  type: string
+  label: Image Tag
+  group: "Images"
             
 
