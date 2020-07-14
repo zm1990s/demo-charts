@@ -2,100 +2,55 @@ categories:
   - Development
 # Global settings, Hostname, images, etc.
 questions:
-- variable: hostname
-  default: "gitlab.corp.local"
-  description: "Gitlab hostname"
-  type: string
-  label: Hostname
-  required: true
-  group: "Gitlab Settings"
-- variable: omnibus_config
-  default: "external_url 'http://gitlab.corp.local'"
-  description: "Gitlab external-url, full qualified domain"
-  label: External URL
-  type: string
-  required: true
-  group: "Gitlab Settings"
 
-#images Settings
-- variable: changedefaultimage.enabled
-  default: "False"
-  description: "If You Wish to Change Default Images Repository, Check this."
-  type: boolean
-  label: Change Default Images Repository
-  show_subquestion_if: true
-  group: "Images Settings"
+# region settings
+- variable: region
+  required: true
+  default: hwpoc
+  description: "select Development region"
+  type: enum
+  label: App region
+  group: "Global"
+  options:
+  - "hwpoc"
+  - "public-AKS"
+  - "local"
   subquestions:
     - variable: image.repository
-      default: "gitlab/gitlab-ce:13.0.6-ce.0"
-      description: "gitlab docker image name"
+      show_if: "region=hwpoc"
+      default: "dyadin/toolbox"
+      description: "docker image name"
       type: string
-      label: gitlab Image Name and Tag
-      group: "Images Settings"
-      show_if: "changedefaultimage.enabled=true"
-
-# Network settings
-- variable: service.nodePort.http
-  default: "31080"
-  description: "Gitlab http port, Range:30000~32767"
-  type: int
-  required: true
-  min: 30000
-  max: 32767
-  label: Gitlab Http Port
-  group: "NodePort ettings"
-- variable: service.nodePort.https
-  default: "31443"
-  description: "Gitlab https port, Range:30000~32767"
-  type: int
-  required: true
-  min: 30000
-  max: 32767
-  label: Gitlab https port
-  group: "NodePort ettings"
-- variable: service.nodePort.ssh
-  default: "31022"
-  description: "Gitlab ssh port, Range:30000~32767"
-  type: int
-  required: true
-  min: 30000
-  max: 32767
-  label: Gitlab ssh port
-  group: "NodePort settings"
-
-# persistent volume settings
-- variable: persistence.enabled
-  default: "True"
-  description: "Enable persistent volume for Gitlab"
-  type: boolean
-  required: true
-  label: Gitlab Persistent Volume Enabled
-  show_subquestion_if: true
-  group: "Persistent Volume Settings"
-  subquestions:
-    - variable: gitlab.storageClass
-      default: ""
-      description: "BE CAREFUL WITH NFS PV, GITLAB MIGHT FAIL TO START!! If undefined or null, uses the default StorageClass"
-      type: storageclass
-      label: Default StorageClass for Gitlab
-    - variable: gitlab.size
-      default: "10Gi"
-      description: "Gitlab data Dir Persistent Volume Size"
+      label: Image Name
+    - variable: image.tag
+      show_if: "region=hwpoc"
+      default: "1.0"
+      description: "docker image tag"
       type: string
-      label: Gitlab Data Dir Volume Size
-    - variable: persistence.existingClaim.data
-      default: ""
-      description: "If not empty, uses the specified existing PVC instead of creating new one"
-      type: pvc
-      label: Uses Existing Persistent Volume Cliam for Data Dir
-    - variable: gitlab.etc.size
-      default: "1Gi"
-      description: "Gitlab Etc Dir Persistent Volume Size"
+      label: Image Tag
+    - variable: image.repository
+      show_if: "region=public-AKS"
+      default: "dyadin/toolbox"
+      description: "docker image name"
       type: string
-      label: Gitlab Etc Dir Volume Size
-    - variable: persistence.existingClaim.etc
-      default: ""
-      description: "If not empty, uses the specified existing PVC instead of creating new one"
-      type: pvc
-      label: Uses Existing Persistent Volume Cliam for Etc Dir
+      label: Image Name
+    - variable: image.tag
+      show_if: "region=public-AKS"
+      default: "1.1"
+      description: "docker image tag"
+      type: string
+      label: Image Tag
+    - variable: image.repository
+      show_if: "region=local"
+      default: "dyadin/troubleshooting-toolbox"
+      description: "docker image name"
+      type: string
+      label: Image Name
+    - variable: image.tag
+      show_if: "region=local"
+      default: "latest"
+      description: "docker image tag"
+      type: string
+      label: Image Tag
+            
 

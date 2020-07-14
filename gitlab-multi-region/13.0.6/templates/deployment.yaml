@@ -26,30 +26,17 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}"
           imagePullPolicy: IfNotPresent
-          env:
-          - name: GITLAB_HOST
-            value: {{ .Values.hostname }}
-          - name: HOSTNAME
-            value: {{ .Values.hostname }}
-          - name: GITLAB_OMNIBUS_CONFIG
-            value: {{ .Values.omnibus_config }}
+          command:
+          - /bin/sh
+          args:
+          - darkhttpd
+          - /root
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
-              name: https
-              containerPort: 443
-              protocol: TCP
-              name: ssh
-              containerPort: 22
-              protocol: TCP
           securityContext:
             runAsNonRoot: false
-          volumeMounts:
-          - mountPath: /var/opt/gitlab
-            name: gitlab-data
-          - mountPath: /etc/gitlab
-            name: gitlab-etc
           startupProbe:
             httpGet:
               path: /
@@ -70,18 +57,3 @@ spec:
             initialDelaySeconds: 60
             periodSeconds: 10
             failureThreshold: 3
-      volumes:
-      - name: gitlab-data
-      {{- if .Values.persistence.enabled }}
-        persistentVolumeClaim:
-          claimName: "{{ .Release.Name }}-data"
-      {{- else }}
-        emptyDir: {}
-      {{- end }}
-      - name: gitlab-etc
-      {{- if .Values.persistence.enabled }}
-        persistentVolumeClaim:
-          claimName: "{{ .Release.Name }}-etc"
-      {{- else }}
-        emptyDir: {}
-      {{- end }}
