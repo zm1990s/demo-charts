@@ -12,31 +12,32 @@ questions:
   label: App region
   group: "Images"
   options:
-  - "true"
-  - "false"
+  - "hwpoc"
+  - "public-AKS"
+  - "local"
 - variable: image.repository 
   default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
   group: "Images"
-  show_if: "region=true"
+  show_if: "region=hwpoc"
 - variable: image.tag
-  show_if: "region=true"
+  show_if: "region=hwpoc"
   default: "1.0"
   description: "docker image tag"
   type: string
   label: Image Tag
   group: "Images"
 - variable: image.repository
-  show_if: "region=false"
+  show_if: "region=public-AKS"
   default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
   group: "Images"
 - variable: image.tag
-  show_if: "region=false"
+  show_if: "region=public-AKS"
   default: "1.1"
   description: "docker image tag"
   type: string
@@ -56,3 +57,28 @@ questions:
   type: string
   label: Image Tag
   group: "Images"
+#ss 
+- variable: expose.tls.enabled
+  default: "false"
+  required: true
+  description: "How to access Harbor, HTTPS or HTTP "
+  type: enum
+  label: Enable tls or not
+  group: "Expose Service Options"
+  options:
+  - "true"
+  - "false"
+- variable: externalURL
+  default: "https://core.harbor.domain"
+  description: "The external URL for Harbor core service (format: protocol://domain:port)"
+  type: string
+  label: The External URL for Harbor Service
+  group: "Expose Service Options"
+  show_if: "expose.tls.enabled=true"
+- variable: externalURL
+  default: "http://core.harbor.domain"
+  description: "The external URL for Harbor core service (format: protocol://domain:port)"
+  type: string
+  label: The External URL for Harbor Service
+  group: "Expose Service Options"
+  show_if: "expose.tls.enabled=false"
