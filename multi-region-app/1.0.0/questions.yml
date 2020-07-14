@@ -6,11 +6,11 @@ questions:
 # region settings
 - variable: region
   required: true
-  default: hwpoc
+  default: ""
   description: "select Development region"
   type: enum
   label: App region
-  group: "Global"
+  group: "Images"
   options:
   - "hwpoc"
   - "public-AKS"
