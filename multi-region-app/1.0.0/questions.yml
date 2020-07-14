@@ -10,7 +10,7 @@ questions:
   description: "select Development region"
   type: enum
   label: App region
-  group: "Images"
+  group: "Global"
   options:
   - "hwpoc"
   - "public-AKS"
@@ -20,40 +20,40 @@ questions:
   description: "docker image name"
   type: string
   label: Image Name
-  group: "Images"
+  group: "Images-hwpoc"
   show_if: "region.selected=hwpoc"
 - variable: image.tag
   default: "1.0"
   description: "docker image tag"
   type: string
   label: Image Tag
-  group: "Images"
+  group: "Images-hwpoc"
   show_if: "region.selected=hwpoc"
 - variable: image.repository
   default: "dyadin/toolbox"
   description: "docker image name"
   type: string
   label: Image Name
-  group: "Images"
+  group: "Images-aks"
   show_if: "region.selected=public-AKS"
 - variable: image.tag
   default: "1.1"
   description: "docker image tag"
   type: string
   label: Image Tag
-  group: "Images"
+  group: "Images-aks"
   show_if: "region.selected=public-AKS"
 - variable: image.repository
   default: "dyadin/troubleshooting-toolbox"
   description: "docker image name"
   type: string
   label: Image Name
-  group: "Images"
+  group: "Images-local"
   show_if: "region.selected=local"
 - variable: image.tag
   default: "latest"
   description: "docker image tag"
   type: string
   label: Image Tag
-  group: "Images"
+  group: "Images-local"
   show_if: "region.selected=local"
