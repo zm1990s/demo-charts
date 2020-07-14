@@ -15,11 +15,11 @@ questions:
   - "hwpoc"
   - "public-AKS"
   - "local"
-- variable: selected-region-hwpoc
-  default: "hwpoc"
-  description: "docker image name"
+- variable: hw.registry
+  default: "harbor-hq.eastmoney.com"
+  description: "Registry URL"
   type: string
-  label: Image Name
+  label: Registry
   group: "Global"
   show_if: "region=hwpoc"
 - variable: image.repository 
@@ -36,7 +36,13 @@ questions:
   type: string
   label: Image Tag
   group: "Images"
-
+- variable: aks.registry
+  default: "harbor-aks.eastmoney.com"
+  description: "Registry URL"
+  type: string
+  label: Registry
+  group: "Global"
+  show_if: "region=public-AKS"
 - variable: image.repository
   show_if: "region=public-AKS"
   default: "dyadin/toolbox"
@@ -51,6 +57,13 @@ questions:
   type: string
   label: Image Tag
   group: "Images"
+- variable: local.registry
+  default: "harbor-hq.eastmoney.com"
+  description: "Registry URL"
+  type: string
+  label: Registry
+  group: "Global"
+  show_if: "region=local"
 - variable: image.repository
   show_if: "region=local"
   default: "dyadin/troubleshooting-toolbox"
