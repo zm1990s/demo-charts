@@ -57,5 +57,18 @@ questions:
   type: string
   label: Image Tag
   group: "Images"
-            
+- variable: image.repository
+  show_if: "region="hwpoc""
+  default: "dyadin/toolbox"
+  description: "docker image name"
+  type: string
+  label: Image Name
+  group: "Images"
+- variable: image.tag
+  show_if: "region="hwpoc"
+  default: "1.0"
+  description: "docker image tag"
+  type: string
+  label: Image Tag
+  group: "Images"       
 
