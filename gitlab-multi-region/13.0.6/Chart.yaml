@@ -1,0 +1,16 @@
+apiVersion: v1
+appVersion: "1.0"
+description: test
+name: gitlab-mini-multiregion
+icon: file://../gitlab.png
+version: "13.0.6-ce.0"
+keywords:
+- gitlab
+- git
+
+sources:
+- https://github.com/zm1990s/demo-charts/
+
+maintainers:
+- name: zhangmin  
+  email: zhangmin@rancher.com
