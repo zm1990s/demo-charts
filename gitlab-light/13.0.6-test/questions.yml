@@ -1,21 +1,22 @@
 categories:
   - Development
-# Global settings, Hostname, images, etc.
+
+# 全局设置，设置应用 Hostname、密码等
 questions:
 - variable: hostname
+# 变量名为 hostname，在未来会使用 "{{ .Values.hostname }}" 来进行调用
   default: "gitlab.corp.local"
+# 变量的默认值，可以为空”“
   description: "Gitlab hostname"
+# 变量的描述
   type: string
+# 变量的类型为 string，其他类型有 password、enum、boolean、int等
   label: Hostname
+# 变量的标签
   required: true
+# 变量是否为必需，如果必需则会加 *
   group: "Gitlab Settings"
-- variable: omnibus_config
-  default: "external_url 'http://gitlab.corp.local'"
-  description: "Gitlab external-url, full qualified domain"
-  label: External URL
-  type: string
-  required: true
-  group: "Gitlab Settings"
+# UI 上表单的分组
 - variable: rootpassword
   default: ""
   description: "Gitlab root password"
@@ -23,28 +24,15 @@ questions:
   type: password
   required: true
   group: "Gitlab Settings"
-- variable: rootemail
-  default: "admin@gitlab.com"
-  description: "Gitlab root email"
-  label: Root E-Mail
-  type: string
-  required: true
-  group: "Gitlab Settings"
-- variable: dbpassword
-  default: ""
-  description: "Gitlab Database password"
-  label: DB Password
-  type: password
-  required: true
-  group: "Gitlab Settings"
 
-#images Settings
+# 镜像设置
 - variable: changedefaultimage.enabled
   default: "False"
   description: "If You Wish to Change Default Images Repository, Check this."
   type: boolean
   label: Change Default Images Repository
   show_subquestion_if: true
+# 当用户勾选此选项时，展示子菜单
   group: "Images Settings"
   subquestions:
     - variable: image.repository.gitlab
@@ -53,79 +41,3 @@ questions:
       type: string
       label: gitlab Image Name
       group: "Images Settings"
-      show_if: "changedefaultimage.enabled=true"
-    - variable: image.repository.postgres
-      default: "sameersbn/postgresql:11-20200524"
-      description: "postgres docker image name"
-      type: string
-      label: Postgres Image Name
-      group: "Images Settings"
-      show_if: "changedefaultimage.enabled=true"
-    - variable: image.repository.redis
-      default: "sameersbn/redis:4.0.9-2"
-      description: "Redis docker image name"
-      type: string
-      label: gitlab Image Name
-      group: "Images Settings"
-      show_if: "changedefaultimage.enabled=true"
-
-# Network settings
-- variable: service.nodePort.http
-  default: "31080"
-  description: "Gitlab http port, Range:30000~32767"
-  type: int
-  required: true
-  min: 30000
-  max: 32767
-  label: Gitlab Http Port
-  group: "NodePort ettings"
-- variable: service.nodePort.https
-  default: "31443"
-  description: "Gitlab https port, Range:30000~32767"
-  type: int
-  required: true
-  min: 30000
-  max: 32767
-  label: Gitlab https port
-  group: "NodePort ettings"
-- variable: service.nodePort.ssh
-  default: "31022"
-  description: "Gitlab ssh port, Range:30000~32767"
-  type: int
-  required: true
-  min: 30000
-  max: 32767
-  label: Gitlab ssh port
-  group: "NodePort settings"
-
-# persistent volume settings
-- variable: persistence.enabled
-  default: "True"
-  description: "Enable persistent volume for Gitlab"
-  type: boolean
-  required: true
-  label: Gitlab Persistent Volume Enabled
-  show_subquestion_if: true
-  group: "Persistent Volume Settings"
-  subquestions:
-    - variable: gitlab.storageClass
-      default: ""
-      required: true
-      description: "BE CAREFUL WITH NFS PV, GITLAB MIGHT FAIL TO START!! If undefined or null, uses the default StorageClass"
-      type: storageclass
-      label: Default StorageClass for Gitlab
-    - variable: gitlab.size
-      default: "10Gi"
-      description: "Gitlab data Dir Persistent Volume Size"
-      type: string
-      label: Gitlab Data Dir Volume Size
-    - variable: db.size
-      default: "5Gi"
-      description: "Gitlab Database Persistent Volume Size"
-      type: string
-      label: Gitlab Database Volume Size
-    - variable: redis.size
-      default: "5Gi"
-      description: "Gitlab Redis Persistent Volume Size"
-      type: string
-      label: Gitlab Redis Volume Size
