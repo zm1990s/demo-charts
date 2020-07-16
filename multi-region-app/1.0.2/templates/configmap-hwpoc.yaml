@@ -1,4 +1,4 @@
-{{- if .Values.region=hwpoc }}
+{{- if eq .Values.region "hwpoc" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
