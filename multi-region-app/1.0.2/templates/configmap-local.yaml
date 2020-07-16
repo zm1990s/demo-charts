@@ -1,0 +1,11 @@
+{{- if .Values.region=local }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-index
+  namespace: default
+data:
+  index.html: |
+    <h1>Nginx Test Server </h1>
+    <h2>You're using Local k8s cluster</h2>
+{{- end }}

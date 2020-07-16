@@ -1,0 +1,11 @@
+{{- if .Values.region=public-AKS }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-index
+  namespace: default
+data:
+  index.html: |
+    <h1>Nginx Test Server </h1>
+    <h2>You're using AKS k8s cluster</h2>
+{{- end }}
