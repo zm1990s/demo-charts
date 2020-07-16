@@ -1,4 +1,4 @@
-# 单节点 gitlab 应用
+# 支持多云环境部署的demo app
 
-单节点 Gitlab，用于快速测试
+允许用户选择当前的应用应该部署在哪个云，根据不同云使用不同的 image 地址、configmap、service 来创建应用。
 
