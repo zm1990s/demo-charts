@@ -44,24 +44,18 @@ spec:
             name: nginx-index
           securityContext:
             runAsNonRoot: false
-          startupProbe:
-            httpGet:
-              path: /
-              port: 80
-            failureThreshold: 30
-            periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /
               port: 80
-            initialDelaySeconds: 180
+            initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /
               port: 80
-            initialDelaySeconds: 60
+            initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
       volumes:
