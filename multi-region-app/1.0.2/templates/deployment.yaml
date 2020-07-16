@@ -24,16 +24,6 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-# 利用区域设置不同的镜像
-#{{- if .Values.region=local }}
-          image: nginx:latest
-#{{- end }}
-#{{- if .Values.region=public-AKS}}
-#          image: nginx:1.18.0-alpine
-#{{- end }}
-#{{- if .Values.region=hwpoc}}
-#          image: nginx:1.19.1-alpine
-#{{- end }}
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -42,8 +32,7 @@ spec:
           volumeMounts:
           - mountPath: /usr/share/nginx/html/doc/
             name: nginx-index
-        volumes:
-        - name: nginx-index
+
           configMap:
             name: nginx-index
           securityContext:
@@ -68,3 +57,5 @@ spec:
             initialDelaySeconds: 60
             periodSeconds: 10
             failureThreshold: 3
+        volumes:
+        - name: nginx-index
