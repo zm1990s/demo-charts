@@ -28,7 +28,7 @@ spec:
 {{- if eq .Values.region "local" }}
           image: nginx:latest
 {{- end }}
-{{- eq .Values.region "public-AKS" }}
+{{- if eq .Values.region "public-AKS" }}
           image: nginx:1.18.0-alpine
 {{- end }}
 {{- if eq .Values.region "hwpoc" }}
