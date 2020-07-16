@@ -32,9 +32,6 @@ spec:
           volumeMounts:
           - mountPath: /usr/share/nginx/html/doc/
             name: nginx-index
-
-          configMap:
-            name: nginx-index
           securityContext:
             runAsNonRoot: false
           startupProbe:
@@ -57,5 +54,7 @@ spec:
             initialDelaySeconds: 60
             periodSeconds: 10
             failureThreshold: 3
-        volumes:
+      volumes:
         - name: nginx-index
+          configMap:
+            name: nginx-index
