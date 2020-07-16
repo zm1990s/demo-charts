@@ -40,7 +40,7 @@ spec:
               containerPort: 80
               protocol: TCP
           volumeMounts:
-          - mountPath: /usr/share/nginx/html/doc/
+          - mountPath: /usr/share/nginx/html/
             name: nginx-index
           securityContext:
             runAsNonRoot: false
