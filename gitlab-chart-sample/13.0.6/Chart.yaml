@@ -1,0 +1,35 @@
+apiVersion: v1
+# [必选]，描述 chart API 版本号，
+name: gitlab-chart-demo
+# [必选]，描述 chart 名称
+version: 13.0.6
+# [必选]，描述 chart 版本，必须遵照 SemVer 2 命名标准，即 MAJOR.MINOR.PATCH
+## MAJOR: 有 API 变动等较大变动，与之前的版本不兼容
+## MINOR：添加了新的功能，但向后兼容
+## PATCH：进行了 bug 修复，向后兼容
+kubeVersion: 1.16.0-1.18.0
+# [可选]，描述此 Chart 兼容的 Kubernetes 版本范围
+description: A Gitlab Chart Demo for Kubernetes
+# [可选]，对于此 Chart 的单行描述
+keywords:
+  - Tools 
+  - System
+  - gitlab
+# [可选]，此 Chart 的类别关键词
+home: https://github.com/zm1990s/demo-charts
+# [可选]，此 Chart 的项目链接
+sources:
+  - https://gitlab.com/
+# [可选]，此 Chart 相关源代码的项目链接
+
+maintainers:
+  - name: zm1990s
+    email: zm1990s@gmail.com
+    url: https://github.com/zm1990s/
+# [可选]，此 Chart 维护者的个人信息
+
+#icon: 
+ icon: file://../gitlab.png
+# [可选]，此 Chart 的展示图标
+appVersion: 13.0.6
+# [可选]，此 Chart 中运行应用的版本号，必须遵照 SemVer 2 命名标准

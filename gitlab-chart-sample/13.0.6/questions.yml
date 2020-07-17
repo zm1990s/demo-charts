@@ -1,8 +1,21 @@
 categories:
   - Development
 
-# 全局设置，设置应用 Hostname、密码等
 questions:
+# 区域选择
+- variable: region
+  required: true
+  default: "Huawei-CCE"
+  description: "select application region"
+  type: enum
+  label: App region
+  group: "Global"
+  options:
+  - "Huawei-CCE"
+  - "Azure-AKS"
+  - "Local-DC"
+
+# Gitlab 设置，设置应用 Hostname、密码等
 - variable: hostname
 # 变量名为 hostname，在未来会使用 "{{ .Values.hostname }}" 来进行调用
   default: "gitlab.corp.local"
