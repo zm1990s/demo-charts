@@ -2,7 +2,7 @@ apiVersion: v1
 # [必选]，描述 chart API 版本号，
 name: gitlab-chart-demo
 # [必选]，描述 chart 名称
-version: 13.0.6
+version: 1.0.1
 # [必选]，描述 chart 版本，必须遵照 SemVer 2 命名标准，即 MAJOR.MINOR.PATCH
 ## MAJOR: 有 API 变动等较大变动，与之前的版本不兼容
 ## MINOR：添加了新的功能，但向后兼容
@@ -31,5 +31,5 @@ maintainers:
 icon: https://about.gitlab.com/images/devops-tools/gitlab-logo.svg
 # icon: file://../gitlab.png
 # [可选]，此 Chart 的展示图标
-appVersion: 13.0.6
+appVersion: 1.0.1
 # [可选]，此 Chart 中运行应用的版本号，必须遵照 SemVer 2 命名标准
