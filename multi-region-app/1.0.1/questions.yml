@@ -1,81 +1,61 @@
+# 应用类别
 categories:
   - Development
-# Global settings, Hostname, images, etc.
 questions:
 
-# region settings
+# 设置名为 region 的变量
 - variable: region
-  required: true
-  default: "hwpoc"
-  description: "select Development region"
+# 此变量类型为 enum
   type: enum
-  label: App region
-  group: "Global"
+# 规定此项目为必选项，会加红色 * 标识
+  required: true
+# 规定此项目的标签
+  label: 区域/集群选择
+# 为此选项设置描述
+  description: "请选择应用将要部署的区域/集群"
+# 设置此项目默认值为 Huawei-CCE
+  default: "Huawei-CCE"
+# 此项目所属组为全局，此选项只是为了让表单好看一些
+  group: "全局"
+# 此变量的选项
   options:
-  - "hwpoc"
-  - "public-AKS"
-  - "local"
-- variable: hw.registry
-  default: "harbor-hq.eastmoney.com"
-  description: "Registry URL"
-  type: string
-  label: Registry
-  group: "Global"
-  show_if: "region=hwpoc"
-- variable: imagename 
-  default: "dyadin/toolbox"
-  description: "docker image name"
-  type: string
-  label: Image Name
-  group: "Images"
-  show_if: "region=hwpoc"
-- variable: imagetag
-  show_if: "region=hwpoc"
-  default: "1.1"
-  description: "docker image tag"
-  type: string
-  label: Image Tag
-  group: "Images"
-- variable: aks.registry
-  default: "harbor-aks.eastmoney.com"
-  description: "Registry URL"
-  type: string
-  label: Registry
-  group: "Global"
-  show_if: "region=public-AKS"
-- variable: imagename
-  show_if: "region=public-AKS"
-  default: "dyadin/toolbox"
-  description: "docker image name"
-  type: string
-  label: Image Name
-  group: "Images"
-- variable: imagetag
-  show_if: "region=public-AKS"
-  default: "latest"
-  description: "docker image tag"
-  type: string
-  label: Image Tag
-  group: "Images"
-- variable: local.registry
-  default: "harbor-hq.eastmoney.com"
-  description: "Registry URL"
-  type: string
-  label: Registry
-  group: "Global"
-  show_if: "region=local"
-- variable: imagename
-  show_if: "region=local"
-  default: "dyadin/troubleshooting-toolbox"
-  description: "docker image name"
-  type: string
-  label: Image Name
-  group: "Images"
-- variable: imagetag
-  show_if: "region=local"
-  default: "latest"
-  description: "docker image tag"
-  type: string
-  label: Image Tag
-  group: "Images"
+  - "Huawei-CCE"
+  - "Azure-AKS"
+  - "Local-DC"
 
+- variable: image.repository-hq
+  required: true
+  default: harbor-hq.eastmoney.com/exquotes-free/exquotes-free
+  description: "The image repository name"
+  type: string
+  label: Name of image repository
+  group: "DEPLOYMENT"
+  show-if: "region=hwpoc"
+
+- variable: image.repository-aks
+  required: true
+  default: harbor-aks.eastmoney.com/exquotes-free/exquotes-free
+  description: "The image repository name"
+  type: string
+  label: Name of image repository
+  group: "DEPLOYMENT"
+  show-if: "region=public-AKS"
+
+- variable: replicaCount
+  required: true
+  default: 1
+  description: "The number of pod replicas running."
+  type: string
+  label: Number of Pod
+  group: "DEPLOYMENT"
+
+- variable: image.pullpolicy
+  required: true
+  default: IfNotPresent
+  description: "The image pull policy."
+  type: enum
+  label: Image Pull Policy
+  group: "DEPLOYMENT"
+  options:
+  - "IfNotPresent"
+  - "Always"

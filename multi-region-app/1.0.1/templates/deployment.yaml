@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/name: {{ .Chart.Name }}
     app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   strategy:
     rollingUpdate:
       maxSurge: 0
@@ -24,36 +24,38 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.imagename}}:{{ .Values.imagetag }}"
-          imagePullPolicy: IfNotPresent
-          command:
-          - /bin/bash
-          args:
-          - darkhttpd
-          - /root
+# 利用区域设置不同的镜像
+{{- if eq .Values.region "hwpoc" }}
+          image: {{ .Values.image.repository-hq }}:${CICD_EXECUTION_SEQUENCE}
+{{- end }}
+{{- if eq .Values.region "public-AKS" }}
+          image: {{ .Values.image.repository-aks }}:${CICD_EXECUTION_SEQUENCE}
+{{- end }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
+          volumeMounts:
+          - mountPath: /usr/share/nginx/html/
+            name: nginx-index
           securityContext:
             runAsNonRoot: false
-          startupProbe:
-            httpGet:
-              path: /
-              port: 80
-            failureThreshold: 30
-            periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /
               port: 80
-            initialDelaySeconds: 180
+            initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /
               port: 80
-            initialDelaySeconds: 60
+            initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
+      volumes:
+        - name: nginx-index
+          configMap:
+            name: nginx-index
