@@ -57,7 +57,7 @@ questions:
 # 变量名为 rootpassword
 - variable: rootpassword
 # 变量的类型为密码
-  type: password
+  type: secret
 # 变量是否为必需，如果必需则会加 *
   required: true
 # 变量的标签
