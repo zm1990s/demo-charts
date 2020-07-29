@@ -13,7 +13,7 @@ description: 多区域应用测试
 # [可选]，对于此 Chart 的单行描述
 keywords:
   - Application 
-  - 多区域
+  - Multi-Region
 # [可选]，此 Chart 的类别关键词
 home: https://github.com/zm1990s/demo-charts
 # [可选]，此 Chart 的项目链接
