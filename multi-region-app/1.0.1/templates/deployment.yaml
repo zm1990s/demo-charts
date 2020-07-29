@@ -25,11 +25,14 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
 # 利用区域设置不同的镜像
-{{- if eq .Values.region "hwpoc" }}
-          image: {{ .Values.image.repository-hq }}:${CICD_EXECUTION_SEQUENCE}
+{{- if eq .Values.region "Huawei-CCE" }}
+          image: harbor-cce.xxx.com/rancher-demo:${CICD_EXECUTION_SEQUENCE}
 {{- end }}
-{{- if eq .Values.region "public-AKS" }}
-          image: {{ .Values.image.repository-aks }}:${CICD_EXECUTION_SEQUENCE}
+{{- if eq .Values.region "Azure-AKS" }}
+          image: harbor-azure.xxx.com/rancher-demo:${CICD_EXECUTION_SEQUENCE}
+{{- end }}
+{{- if eq .Values.region "Local-DC" }}
+          image: harbor-hq.xxx.com/rancher-demo:${CICD_EXECUTION_SEQUENCE}
 {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -39,6 +42,8 @@ spec:
           volumeMounts:
           - mountPath: /usr/share/nginx/html/
             name: nginx-index
+          - mountPath: /mnt
+            name: nginx-data
           securityContext:
             runAsNonRoot: false
           livenessProbe:
@@ -56,6 +61,14 @@ spec:
             periodSeconds: 10
             failureThreshold: 3
       volumes:
+        # 将 Configmap 挂载为数据卷，存放配置文件
         - name: nginx-index
           configMap:
             name: nginx-index
+        - name: nginx-data
+        {{- if .Values.pv.enabled }}
+          persistentVolumeClaim:
+            claimName: "{{ .Chart.Name }}-data"
+        {{- else }}
+          emptyDir: {}
+        {{- end }}

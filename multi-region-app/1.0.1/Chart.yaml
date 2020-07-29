@@ -1,6 +1,6 @@
 apiVersion: v1
 # [必选]，描述 chart API 版本号，
-name: Multi-Region-App
+name: multi-region-app
 # [必选]，描述 chart 名称
 version: 1.0.1
 # [必选]，描述 chart 版本，必须遵照 SemVer 2 命名标准，即 MAJOR.MINOR.PATCH
@@ -9,11 +9,12 @@ version: 1.0.1
 ## PATCH：进行了 bug 修复，向后兼容
 kubeVersion: 1.16.0-1.18.0
 # [可选]，描述此 Chart 兼容的 Kubernetes 版本范围
-description: 多区域应用测试
+description: "多区域应用测试"
 # [可选]，对于此 Chart 的单行描述
 keywords:
-  - Application 
-  - Multi-Region
+  - Tools 
+  - System
+
 # [可选]，此 Chart 的类别关键词
 home: https://github.com/zm1990s/demo-charts
 # [可选]，此 Chart 的项目链接

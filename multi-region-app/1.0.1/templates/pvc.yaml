@@ -1,4 +1,4 @@
-{{- if .Values.persistence.enabled }}
+{{- if .Values.pv.enabled }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -8,12 +8,12 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.gitlab.size }}
-  {{- if .Values.gitlab.storageClass }}
-    {{- if eq "-" .Values.gitlab.storageClass }}
+      storage: {{ .Values.app.pvsize }}
+  {{- if .Values.app.storageClass }}
+    {{- if eq "-" .Values.app.storageClass }}
   storageClassName: ""
     {{- else }}
-  storageClassName: {{ .Values.gitlab.storageClass }}
+  storageClassName: {{ .Values.app.storageClass }}
     {{- end }}
   {{- end }}
 {{- end }}

@@ -1,6 +1,7 @@
 # 应用类别
 categories:
   - Development
+
 questions:
 
 # 设置名为 region 的变量
@@ -23,39 +24,87 @@ questions:
   - "Azure-AKS"
   - "Local-DC"
 
-- variable: image.repository-hq
-  required: true
-  default: harbor-hq.eastmoney.com/exquotes-free/exquotes-free
-  description: "The image repository name"
+# Gitlab 设置，设置应用 Hostname、密码等
+# 变量名为 hostname，在未来会使用 "{{ .Values.hostname }}" 来进行调用
+- variable: hostname
+# 变量的类型为 string
   type: string
-  label: Name of image repository
-  group: "DEPLOYMENT"
-  show-if: "region=hwpoc"
-
-- variable: image.repository-aks
+# 变量是否为必需，如果必需则会加 *
   required: true
-  default: harbor-aks.eastmoney.com/exquotes-free/exquotes-free
-  description: "The image repository name"
-  type: string
-  label: Name of image repository
-  group: "DEPLOYMENT"
-  show-if: "region=public-AKS"
+# 变量的标签
+  label: Hostname
+# 变量的描述
+  description: "应用 hostname"
+# 变量的默认值，可以为空
+  default: "app1.corp.local"
+# UI 上表单的分组
+  group: "应用部署配置"
 
+
+# 变量名为 replicaCount
 - variable: replicaCount
-  required: true
+# 变量的类型为 int
+  type: int
+# 变量的标签
+  label: "Pod 副本数量"
+# 变量的描述
+  description: "Pod 副本数量"
+# 变量的默认值
   default: 1
-  description: "The number of pod replicas running."
-  type: string
-  label: Number of Pod
-  group: "DEPLOYMENT"
+# UI 上表单的分组
+  group: "应用部署配置"
 
-- variable: image.pullpolicy
+# 变量名为 rootpassword
+- variable: rootpassword
+# 变量的类型为密码
+  type: password
+# 变量是否为必需，如果必需则会加 *
   required: true
-  default: IfNotPresent
-  description: "The image pull policy."
-  type: enum
-  label: Image Pull Policy
-  group: "DEPLOYMENT"
-  options:
-  - "IfNotPresent"
-  - "Always"
+# 变量的标签
+  label: "root 用户密码"
+# 变量的描述
+  description: "请输入 root 用户密码"
+# 默认值为空
+  default: ""
+# UI 上表单的分组
+  group: "应用部署配置"
+
+# 变量名为 xyzsecret
+- variable: xyzsecret
+# 变量的类型为密码
+  type: secret
+# 变量是否为必需，如果必需则会加 *
+  required: true
+# 变量的标签
+  label: "证书"
+# 变量的描述
+  description: "请选择证书"
+# 默认值为空
+  default: ""
+# UI 上表单的分组
+  group: "应用部署配置"
+
+
+# 变量名为 pv.enabled
+- variable: pv.enabled
+  type: boolean
+  label: "是否为应用配置 PV"
+  description: "是否为应用配置 PV"
+  default: "False"
+  group: "应用部署配置"
+# 如果是，则显示子菜单
+  show_subquestion_if: true
+  subquestions:
+    - variable: app.storageClass
+      type: storageclass
+      required: true
+      label: "存储类"
+      description: "请选择存储类"
+      default: ""
+    - variable: app.pvsize
+      type: string
+      label: "卷大小"
+      description: "请设置应用需要的存储卷大小"
+      default: "10Gi"
+      
+      
