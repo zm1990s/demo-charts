@@ -1,4 +1,4 @@
-{{- if eq .Values.region "local" }}
+{{- if eq .Values.region "Local-DC" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:

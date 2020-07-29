@@ -1,4 +1,4 @@
-{{- if eq .Values.region "hwpoc" }}
+{{- if eq .Values.region "Huawei-CCE" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,5 +6,5 @@ metadata:
 data:
   index.html: |
     <h1>Nginx Test Server </h1>
-    <h2>You're using hwpoc k8s cluster</h2>
+    <h2>You're using Huawei-CCE k8s cluster</h2>
 {{- end }}

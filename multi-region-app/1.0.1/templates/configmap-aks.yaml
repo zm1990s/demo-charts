@@ -1,4 +1,4 @@
-{{- if eq .Values.region "public-AKS" }}
+{{- if eq .Values.region "Azure-AKS" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
