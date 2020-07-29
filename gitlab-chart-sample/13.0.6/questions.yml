@@ -57,7 +57,7 @@ questions:
 # 变量名为 rootpassword
 - variable: rootpassword
 # 变量的类型为密码
-  type: secret
+  type: password
 # 变量是否为必需，如果必需则会加 *
   required: true
 # 变量的标签
@@ -69,19 +69,42 @@ questions:
 # UI 上表单的分组
   group: "应用部署配置"
 
-# 镜像设置
-- variable: changedefaultimage.enabled
-  default: "False"
-  description: "If You Wish to Change Default Images Repository, Check this."
+# 变量名为 xyzsecret
+- variable: xyzsecret
+# 变量的类型为密码
+  type: secret
+# 变量是否为必需，如果必需则会加 *
+  required: true
+# 变量的标签
+  label: "证书"
+# 变量的描述
+  description: "请选择证书"
+# 默认值为空
+  default: ""
+# UI 上表单的分组
+  group: "应用部署配置"
+
+
+# 变量名为 pv.enabled
+- variable: pv.enabled
   type: boolean
-  label: Change Default Images Repository
+  label: "是否为应用配置 PV"
+  description: "是否为应用配置 PV"
+  default: "False"
+  group: "应用部署配置"
+# 如果是，则显示子菜单
   show_subquestion_if: true
-# 当用户勾选此选项时，展示子菜单
-  group: "Images Settings"
   subquestions:
-    - variable: image.repository.gitlab
-      default: "sameersbn/gitlab:13.0.6"
-      description: "gitlab docker image name"
+    - variable: app.storageClass
+      type: storageclass
+      required: true
+      label: "存储类"
+      description: "请选择存储类"
+      default: ""
+    - variable: app.pvsize
       type: string
-      label: gitlab Image Name
-      group: "Images Settings"
+      label: "卷大小"
+      description: "请设置应用需要的存储卷大小"
+      default: "10Gi"
+      
+      
