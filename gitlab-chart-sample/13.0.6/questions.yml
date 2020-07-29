@@ -6,10 +6,10 @@ questions:
 - variable: region
   required: true
   default: "Huawei-CCE"
-  description: "select application region"
+  description: "请选择应用将要部署的区域"
   type: enum
-  label: App region
-  group: "Global"
+  label: "区域选择"
+  group: "全局"
   options:
   - "Huawei-CCE"
   - "Azure-AKS"
