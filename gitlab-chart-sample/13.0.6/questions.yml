@@ -1,8 +1,8 @@
+# 应用类别
 categories:
   - Development
 
 questions:
-# 区域选择
 
 # 设置名为 region 的变量
 - variable: region
@@ -25,20 +25,33 @@ questions:
   - "Local-DC"
 
 # Gitlab 设置，设置应用 Hostname、密码等
-- variable: hostname
 # 变量名为 hostname，在未来会使用 "{{ .Values.hostname }}" 来进行调用
-  default: "gitlab.corp.local"
-# 变量的默认值，可以为空”“
-  description: "Gitlab hostname"
-# 变量的描述
+- variable: hostname
+# 变量的类型为 string
   type: string
-# 变量的类型为 string，其他类型有 password、enum、boolean、int等
-  label: Hostname
-# 变量的标签
-  required: true
 # 变量是否为必需，如果必需则会加 *
-  group: "Gitlab Settings"
+  required: true
+# 变量的标签
+  label: Hostname
+# 变量的描述
+  description: "应用 hostname"
+# 变量的默认值，可以为空
+  default: "app1.corp.local"
 # UI 上表单的分组
+  group: "应用部署配置"
+
+
+
+- variable: replicaCount
+  type: int
+  required: true
+  default: 1
+  label: "Pod 副本数量"
+  description: "Pod 副本数量"
+  
+  group: "DEPLOYMENT"
+
+
 - variable: rootpassword
   default: ""
   description: "Gitlab root password"
