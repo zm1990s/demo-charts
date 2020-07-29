@@ -41,7 +41,7 @@ questions:
   group: "应用部署配置"
 
 
-# 变量名为 hostname
+# 变量名为 replicaCount
 - variable: replicaCount
 # 变量的类型为 int
   type: int
@@ -54,14 +54,20 @@ questions:
 # UI 上表单的分组
   group: "应用部署配置"
 
-
+# 变量名为 rootpassword
 - variable: rootpassword
-  default: ""
-  description: "Gitlab root password"
-  label: Root Password
+# 变量的类型为密码
   type: password
+# 变量是否为必需，如果必需则会加 *
   required: true
-  group: "Gitlab Settings"
+# 变量的标签
+  label: "root 用户密码"
+# 变量的描述
+  description: "请输入 root 用户密码"
+# 默认值为空
+  default: ""
+# UI 上表单的分组
+  group: "应用部署配置"
 
 # 镜像设置
 - variable: changedefaultimage.enabled
