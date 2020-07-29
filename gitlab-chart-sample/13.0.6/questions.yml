@@ -41,15 +41,18 @@ questions:
   group: "应用部署配置"
 
 
-
+# 变量名为 hostname
 - variable: replicaCount
+# 变量的类型为 int
   type: int
-  required: true
-  default: 1
+# 变量的标签
   label: "Pod 副本数量"
+# 变量的描述
   description: "Pod 副本数量"
-  
-  group: "DEPLOYMENT"
+# 变量的默认值
+  default: 1
+# UI 上表单的分组
+  group: "应用部署配置"
 
 
 - variable: rootpassword
