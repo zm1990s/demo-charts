@@ -10,9 +10,9 @@ questions:
 # 规定此项目为必选项，会加红色 * 标识
   required: true
 # 规定此项目的标签
-  label: 区域/集群选择
+  label: 区域选择
 # 为此选项设置描述
-  description: "请选择应用将要部署的区域/集群"
+  description: "请选择应用将要部署的区域"
 # 设置此项目默认值为 Huawei-CCE
   default: "Huawei-CCE"
 # 此项目所属组为全局，此选项只是为了让表单好看一些
