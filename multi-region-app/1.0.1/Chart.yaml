@@ -7,8 +7,6 @@ version: 1.0.1
 ## MAJOR: 有 API 变动等较大变动，与之前的版本不兼容
 ## MINOR：添加了新的功能，但向后兼容
 ## PATCH：进行了 bug 修复，向后兼容
-kubeVersion: 1.16.0-1.18.0
-# [可选]，描述此 Chart 兼容的 Kubernetes 版本范围
 description: 多区域应用测试
 # [可选]，对于此 Chart 的单行描述
 keywords:
